@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace USParks.Data
 {
-    internal class Nature
+    public class Nature
     {
     }
 }

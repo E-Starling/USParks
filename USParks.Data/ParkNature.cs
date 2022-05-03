@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace USParks.Models
+namespace USParks.Data
 {
-    internal class ParkNature
+    public class ParkNature
     {
     }
 }

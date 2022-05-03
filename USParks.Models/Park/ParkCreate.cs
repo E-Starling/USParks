@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace USParks.Models.Park
 {
-    internal class ParkCreate
+    public class ParkCreate
     {
     }
 }

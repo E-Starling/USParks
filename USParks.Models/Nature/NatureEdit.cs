@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace USParks.Models.Nature
 {
-    internal class NatureEdit
+    public class NatureEdit
     {
     }
 }
