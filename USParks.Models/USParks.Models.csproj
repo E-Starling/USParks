@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -49,12 +50,21 @@
     <Compile Include="Nature\NatureDetail.cs" />
     <Compile Include="Nature\NatureEdit.cs" />
     <Compile Include="Nature\NatureListItem.cs" />
+    <Compile Include="ParkNature\ParkNatureCreate.cs" />
+    <Compile Include="ParkNature\ParkNatureDetail.cs" />
+    <Compile Include="ParkNature\ParkNatureEdit.cs" />
+    <Compile Include="ParkNature\ParkNatureListItem.cs" />
     <Compile Include="Park\ParkCreate.cs" />
     <Compile Include="Park\ParkDetail.cs" />
     <Compile Include="Park\ParkEdit.cs" />
     <Compile Include="Park\ParkListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\USParks.Data\USParks.Data.csproj">
+      <Project>{696657BC-D1B5-48C1-A359-915E0F2F2C3A}</Project>
+      <Name>USParks.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

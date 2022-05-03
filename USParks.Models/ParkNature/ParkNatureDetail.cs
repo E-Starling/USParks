@@ -6,21 +6,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace USParks.Data
+namespace USParks.Models.ParkNature
 {
-    public class ParkNature
+    public class ParkNatureDetail
     {
-        [Key]
         public int ParkNatureId { get; set; }
-        [Required]
-        [Display(Name = "Nature")]
-        [ForeignKey("Nature")]
+        [Display(Name = "Nature Id")]
         public int NatureId { get; set; }
-        public virtual Nature Nature { get; set; }
-        [Required]
-        [Display(Name = "Park")]
-        [ForeignKey("Park")]
+        [Display(Name = "Nature Name")]
+        public string NatureName { get; set; }
+        [Display(Name = "Park Id")]
         public int ParkId { get; set; }
-        public virtual Park Park { get; set; }
+        [Display(Name = "Park Name")]
+        public string ParkName { get; set; }
     }
 }

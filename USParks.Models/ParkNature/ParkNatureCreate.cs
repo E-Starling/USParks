@@ -5,14 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace USParks.Models.Attraction
+namespace USParks.Models.ParkNature
 {
-    public class AttractionListItem
+    public class ParkNatureCreate
     {
-        [Display(Name = "Attraction Id")]
-        public int AttractionId { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        [Display(Name = "Nature Id")]
+        public int NatureId { get; set; }
         [Display(Name = "Park Id")]
         public int ParkId { get; set; }
     }
