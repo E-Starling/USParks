@@ -260,6 +260,20 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\USParks.Data\USParks.Data.csproj">
+      <Project>{696657bc-d1b5-48c1-a359-915e0f2f2c3a}</Project>
+      <Name>USParks.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\USParks.Models\USParks.Models.csproj">
+      <Project>{110fc527-2d5f-496f-ad1f-93527801cb77}</Project>
+      <Name>USParks.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\USParks.Services\USParks.Services.csproj">
+      <Project>{2a9cc182-8efb-4c11-854f-28179ba56fe5}</Project>
+      <Name>USParks.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
