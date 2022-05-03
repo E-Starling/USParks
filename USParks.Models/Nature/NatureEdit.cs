@@ -21,6 +21,6 @@ namespace USParks.Models.Nature
         public KingdomType Kingdom { get; set; }
         [MaxLength(50, ErrorMessage = "There are too many characters in this field.")]
         public string Class { get; set; }
-        public DietType Diet { get; set; }
+        public DietType? Diet { get; set; }
     }
 }

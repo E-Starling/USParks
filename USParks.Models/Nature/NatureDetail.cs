@@ -17,6 +17,6 @@ namespace USParks.Models.Nature
         public string Description { get; set; }
         public KingdomType Kingdom { get; set; }
         public string Class { get; set; }
-        public DietType Diet { get; set; }
+        public DietType? Diet { get; set; }
     }
 }
