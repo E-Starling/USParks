@@ -12,6 +12,7 @@ namespace USParks.Services
     {
         private readonly Guid _userId;
 
+        public NatureService() { }
         public NatureService(Guid userId)
         {
             _userId = userId;
@@ -41,16 +42,13 @@ namespace USParks.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query = ctx.Nature.Where(e => e.OwnerId == _userId).Select(e => new NatureListItem
+                var query = ctx.Nature.Select(e => new NatureListItem
                 {
                     NatureId = e.NatureId,
                     Name = e.Name,
-                    Description = e.Description,
                     Kingdom = (NatureListItem.KingdomType)e.Kingdom,
-                    Class = e.Class,
-                    Diet = (NatureListItem.DietType?)e.Diet
-                }
-                );
+                    Class = e.Class
+                });
                 return query.ToArray();
             }
         }

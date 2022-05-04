@@ -9,8 +9,8 @@ namespace USParks.Models.Nature
 {
     public class NatureEdit
     {
-        public enum KingdomType { Fauna, Flora, Funga }
-        public enum DietType { Herbivore, Carnivore, Omnivore, NA }
+        public enum KingdomType { fauna, flora, funga }
+        public enum DietType { herbivore, carnivore, omnivore, other }
 
         [Display(Name = "Nature Id")]
         public int NatureId { get; set; }

@@ -15,7 +15,13 @@ namespace USParks.WebMVC.Controllers
         // GET: Nature
         public ActionResult Index()
         {
-            var model = new NatureListItem[0];
+            // Code for only seeing what user created??
+            //var userId = Guid.Parse(User.Identity.GetUserId());
+            //var service = new NatureService(userId);
+            //var model = service.GetNature();
+            //return View(model);
+            var service = new NatureService();
+            var model = service.GetNature();
             return View(model);
         }
 
@@ -29,18 +35,39 @@ namespace USParks.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(NatureCreate model)
         {
+            //if (!ModelState.IsValid) return View(model);
+
+            //var service = CreateNatureService();
+
+            //if (service.CreateNature(model))
+            //{
+            //    TempData["SaveResult"] = "Your nature was created.";
+            //    return RedirectToAction("Index");
+
+            //};
+            //ModelState.AddModelError("", "Note could not be created.");
+            //return View(model);
+
             if (!ModelState.IsValid) return View(model);
 
             var service = CreateNatureService();
 
             if (service.CreateNature(model))
             {
-                TempData["SaveResult"] = "Your nature was created.";
+                TempData["SaveResult"] = "Nature was added.";
                 return RedirectToAction("Index");
-
             };
-            ModelState.AddModelError("", "Note could not be created.");
+
+            ModelState.AddModelError("", "Nature could not be added.");
+
             return View(model);
+        }
+
+        private NatureService CreateNatureService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new NatureService(userId);
+            return service;
         }
     }
 }
