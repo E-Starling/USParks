@@ -52,6 +52,66 @@ namespace USParks.Services
                 return query.ToArray();
             }
         }
+
+        public NatureDetail GetNatureById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Nature.Single(e => e.NatureId == id);
+                return
+                    new NatureDetail()
+                    {
+                        NatureId = entity.NatureId,
+                        Name = entity.Name,
+                        Description = entity.Description,
+                        Kingdom = (NatureDetail.KingdomType)entity.Kingdom,
+                        Class = entity.Class,
+                        Diet = (NatureDetail.DietType)entity.Diet
+                    };
+            }
+        }
+
+        public bool UpdateNature(NatureEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+               
+                var userNature = ctx.Nature.Where(e => e.OwnerId == _userId).ToArray();
+                foreach (var n in userNature)
+                {
+                    if (n.NatureId == model.NatureId)
+                    {
+                        var entity = ctx.Nature.Single(e => e.NatureId == model.NatureId && e.OwnerId == _userId);
+                        entity.Name = model.Name;
+                        entity.Description = model.Description;
+                        entity.Kingdom = (Nature.KingdomType)model.Kingdom;
+                        entity.Class = model.Class;
+                        entity.Diet = (Nature.DietType)model.Diet;
+
+                        return ctx.SaveChanges() == 1;
+                    }
+                }
+                return false;
+            }
+        }
+
+        public bool DeleteNature(int natureId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var userNature = ctx.Nature.Where(e => e.OwnerId == _userId).ToArray();
+                foreach (var n in userNature)
+                {
+                    if (n.NatureId == natureId)
+                    {
+                        var entity = ctx.Nature.Single(e => e.NatureId == natureId && e.OwnerId == _userId);
+                        ctx.Nature.Remove(entity);
+                        return ctx.SaveChanges() == 1;
+                    }
+                }
+                return false;              
+            }
+        }
     }
 }
 
