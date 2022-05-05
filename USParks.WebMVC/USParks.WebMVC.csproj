@@ -244,12 +244,12 @@
     <Content Include="Views\Nature\Details.cshtml" />
     <Content Include="Views\Nature\Edit.cshtml" />
     <Content Include="Views\Nature\Delete.cshtml" />
+    <Content Include="Views\Park\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Attraction\" />
     <Folder Include="Views\ParkNature\" />
-    <Folder Include="Views\Park\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

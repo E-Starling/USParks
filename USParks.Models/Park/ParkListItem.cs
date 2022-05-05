@@ -15,11 +15,7 @@ namespace USParks.Models.Park
         public int ParkId { get; set; }
         public string Name { get; set; }
         [Display(Name = "Park Type")]
-        public ParkType parkType { get; set; }
-        public string Description { get; set; }
+        public ParkType parkType { get; set; }  
         public string Location { get; set; }
-        public int Size { get; set; }
-        [Display(Name = "Yearly Visitors")]
-        public int YearlyVisitors { get; set; }
     }
 }
