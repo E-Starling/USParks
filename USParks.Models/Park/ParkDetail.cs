@@ -11,7 +11,7 @@ namespace USParks.Models.Park
 {
     public class ParkDetail
     {
-        public enum ParkType { National, State }
+        public enum ParkType { national, state }
         [Display(Name = "Park Id")]
         public int ParkId { get; set; }
         public string Name { get; set; }

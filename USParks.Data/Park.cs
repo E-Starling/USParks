@@ -9,7 +9,7 @@ namespace USParks.Data
 {
     public class Park
     {
-        public enum ParkType { National, State }
+        public enum ParkType { national, state }
         [Key]
         public int ParkId { get; set; }
         [Required]
