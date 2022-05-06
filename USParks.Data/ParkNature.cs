@@ -13,6 +13,8 @@ namespace USParks.Data
         [Key]
         public int ParkNatureId { get; set; }
         [Required]
+        public Guid OwnerId { get; set; }
+        [Required]
         [Display(Name = "Nature")]
         [ForeignKey("Nature")]
         public int NatureId { get; set; }

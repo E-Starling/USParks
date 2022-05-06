@@ -80,12 +80,12 @@ namespace USParks.Services
                                 Nature = entity.ParkNature.Select(n => new ParkNatureListItem()
                                 {
                                     NatureId = n.Nature.NatureId,
-                                    NatureName = n.Nature.Name
+                                    NatureName = n.Nature.Name,
                                 }).ToList(),
                                 Attractions = entity.Attraction.Select(a => new AttractionListItem()
                                 {
                                     AttractionId = a.AttractionId,
-                                    Name = a.Name,
+                                    Name = a.Name
                                 }).ToList(),
                             };
                     }
