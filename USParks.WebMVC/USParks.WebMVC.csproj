@@ -251,6 +251,8 @@
     <Content Include="Views\Park\Delete.cshtml" />
     <Content Include="Views\ParkNature\Index.cshtml" />
     <Content Include="Views\ParkNature\Create.cshtml" />
+    <Content Include="Views\ParkNature\Edit.cshtml" />
+    <Content Include="Views\ParkNature\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

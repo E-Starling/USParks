@@ -86,10 +86,20 @@ namespace USParks.WebMVC.Controllers
             if (service.UpdateParkNature(model))
             {
                 TempData["SaveResult"] = "Nature was updated for the park.";
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Park");
             }
-            TempData["Error"] = "Can't update another user's nature within a park.";
-            return RedirectToAction("Index");
+            if (model.NatureId == id)
+            {
+                ModelState.AddModelError("", "Id wasn't updated");
+                return View(model);
+            }
+            if (model.NatureId != id)
+            {
+                ModelState.AddModelError("","Please enter another valid nature id.");
+                return View(model);
+            }
+            
+            return View(model);
         }
 
         [ActionName("Delete")]
@@ -107,20 +117,14 @@ namespace USParks.WebMVC.Controllers
         public ActionResult DeletePost(int id)
         {
             var service = CreateParkNatureService();
-            if (!service.DeleteParkNature(id))
-            {
-                TempData["Error"] = "Can't remove another user's nature from a park.";
-                return RedirectToAction("Index");
-            }
             service.DeleteParkNature(id);
             TempData["SaveResult"] = "Nature was removed from the park!";
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Park");
         }
 
         private ParkNatureService CreateParkNatureService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new ParkNatureService(userId);
+            var service = new ParkNatureService();
             return service;
         }
     }

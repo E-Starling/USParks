@@ -79,6 +79,7 @@ namespace USParks.Services
                                 YearlyVisitors = entity.YearlyVisitors,
                                 Nature = entity.ParkNature.Select(n => new ParkNatureListItem()
                                 {
+                                    ParkNatureId = n.ParkNatureId,
                                     NatureId = n.Nature.NatureId,
                                     NatureName = n.Nature.Name,
                                 }).ToList(),

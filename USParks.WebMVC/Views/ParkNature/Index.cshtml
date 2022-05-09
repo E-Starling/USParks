@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<USParks.Models.ParkNature.ParkNatureListItem>
 
 @{
-    ViewBag.Title = "ParkNature Index";
+    ViewBag.Title = "Index";
 }
 
 <h2>List of Nature found within Parks</h2>
@@ -44,6 +44,9 @@
         <th>
             @Html.DisplayNameFor(model => model.ParkName)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParkNatureId)
+        </th>
         <th></th>
     </tr>
 
@@ -63,9 +66,11 @@
         @Html.DisplayFor(modelItem => item.ParkName)
     </td>
     <td>
-        @Html.ActionLink("Edit", "Edit", new {  id=item.ParkNatureId  }) |
-        @Html.ActionLink("Details", "Details", new {  id=item.ParkNatureId  }) |
-        @Html.ActionLink("Delete", "Delete", new {  id=item.ParkNatureId  })
+        @Html.DisplayFor(modelItem => item.ParkNatureId)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.ParkNatureId }) |     
+        @Html.ActionLink("Delete", "Delete", new { id = item.ParkNatureId })
     </td>
 </tr>
     }

@@ -67,6 +67,7 @@
         </dd>
     </dl>
     <table class="table">
+        <caption>Nature found within the park</caption>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Nature.First().NatureId)
@@ -78,21 +79,19 @@
         </tr>
         @foreach (var nature in Model.Nature)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelnature => nature.NatureId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelnature => nature.NatureName)
-                </td>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelnature => nature.NatureId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelnature => nature.NatureName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", "ParkNature", new { id = nature.ParkNatureId }, null) |
+            @Html.ActionLink("Delete", "Delete", "ParkNature", new { id = nature.ParkNatureId }, null) |
 
-                <td>
-                    @Html.ActionLink("Edit", "Edit", "ParkNature", new { id = nature.ParkNatureId }, null) |
-                    @Html.ActionLink("Details", "Details", "ParkNature", new { id = nature.ParkNatureId }, null) |
-                    @Html.ActionLink("Delete", "Delete", "ParkNature", new { id = nature.ParkNatureId }, null) |
-
-                </td>
-            </tr>
+        </td>
+    </tr>
         }
         
     </table>
