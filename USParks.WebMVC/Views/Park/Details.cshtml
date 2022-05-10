@@ -68,6 +68,9 @@
     </dl>
     <table class="table">
         <caption>Nature found within the park</caption>
+        <p>
+            @Html.ActionLink("Add Nature to Park", "Create", "ParkNature")
+        </p>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Nature.First().NatureId)
@@ -89,7 +92,6 @@
                 <td>
                     @Html.ActionLink("Edit", "Edit", "ParkNature", new { id = nature.ParkNatureId }, null) |
                     @Html.ActionLink("Delete", "Delete", "ParkNature", new { id = nature.ParkNatureId }, null) |
-
                 </td>
             </tr>
         }
@@ -97,6 +99,11 @@
     </table>
     <table class="table">
         <caption>Attractions found within the park</caption>
+
+            <p>
+                @Html.ActionLink("Add Attraction to Park", "Create", "Attraction")
+            </p>
+
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Attractions.First().AttractionId)

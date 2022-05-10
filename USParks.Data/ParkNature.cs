@@ -22,5 +22,6 @@ namespace USParks.Data
         [ForeignKey("Park")]
         public int ParkId { get; set; }
         public virtual Park Park { get; set; }
+        public virtual List<Park> Parks { get; set; } = new List<Park>();
     }
 }

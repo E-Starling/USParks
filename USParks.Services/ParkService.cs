@@ -128,6 +128,20 @@ namespace USParks.Services
                     if (p.ParkId == parkId)
                     {
                         var entity = ctx.Parks.Single(e => e.ParkId == parkId && e.OwnerId == _userId);
+                        var attract = ctx.Attractions.Where(e => e.OwnerId == _userId).ToArray();
+                        var pk = ctx.ParkNatures.Where(e => e.ParkNatureId == parkId).ToArray();
+                        foreach (var attraction in attract)
+                        {
+                            if (attraction.AttractionId == parkId)
+                                ctx.Attractions.Remove(attraction);
+                            break;
+                        }
+                        foreach (var parknature in pk)
+                        {
+                            if (parknature.ParkNatureId == parkId)                  
+                                ctx.ParkNatures.Remove(parknature);
+                            break;                          
+                        }
                         ctx.Parks.Remove(entity);
                         return ctx.SaveChanges() == 1;
                     }
