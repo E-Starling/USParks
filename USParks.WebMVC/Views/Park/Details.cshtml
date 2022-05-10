@@ -79,21 +79,50 @@
         </tr>
         @foreach (var nature in Model.Nature)
         {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelnature => nature.NatureId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelnature => nature.NatureName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", "ParkNature", new { id = nature.ParkNatureId }, null) |
-            @Html.ActionLink("Delete", "Delete", "ParkNature", new { id = nature.ParkNatureId }, null) |
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelnature => nature.NatureId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelnature => nature.NatureName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "ParkNature", new { id = nature.ParkNatureId }, null) |
+                    @Html.ActionLink("Delete", "Delete", "ParkNature", new { id = nature.ParkNatureId }, null) |
 
-        </td>
-    </tr>
+                </td>
+            </tr>
         }
-        
+
+    </table>
+    <table class="table">
+        <caption>Attractions found within the park</caption>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Attractions.First().AttractionId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Attractions.First().Name)
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var attraction in Model.Attractions)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelattraction => attraction.AttractionId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelattraction => attraction.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", "Attraction", new { id = attraction.AttractionId }, null) |
+                    @Html.ActionLink("Edit", "Edit", "Attraction", new { id = attraction.AttractionId }, null) |
+                    @Html.ActionLink("Delete", "Delete", "Attraction", new { id = attraction.AttractionId }, null) |
+
+                </td>
+            </tr>
+        }
     </table>
 </div>
 <p>

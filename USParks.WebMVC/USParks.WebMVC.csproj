@@ -253,10 +253,14 @@
     <Content Include="Views\ParkNature\Create.cshtml" />
     <Content Include="Views\ParkNature\Edit.cshtml" />
     <Content Include="Views\ParkNature\Delete.cshtml" />
+    <Content Include="Views\Attraction\Index.cshtml" />
+    <Content Include="Views\Attraction\Create.cshtml" />
+    <Content Include="Views\Attraction\Details.cshtml" />
+    <Content Include="Views\Attraction\Edit.cshtml" />
+    <Content Include="Views\Attraction\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Attraction\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

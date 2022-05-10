@@ -10,12 +10,11 @@ namespace USParks.Services
 {
     public class AttractionService
     {
-        public class NatureService
-        {
+
             private readonly Guid _userId;
 
-            public NatureService() { }
-            public NatureService(Guid userId)
+            public AttractionService() { }
+            public AttractionService(Guid userId)
             {
                 _userId = userId;
             }
@@ -59,7 +58,7 @@ namespace USParks.Services
                 }
             }
 
-            public AttractionDetail GetNatureById(int id)
+            public AttractionDetail GetAttractionById(int id)
             {
                 using (var ctx = new ApplicationDbContext())
                 {
@@ -116,5 +115,5 @@ namespace USParks.Services
             }
         }
     }
-}
+
 
