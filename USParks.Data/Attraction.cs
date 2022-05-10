@@ -14,7 +14,7 @@ namespace USParks.Data
         [Display(Name = "Attraction Id")]
         public int AttractionId { get; set; }
         [Required]
-        public Guid UserId { get; set; }
+        public Guid OwnerId { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
