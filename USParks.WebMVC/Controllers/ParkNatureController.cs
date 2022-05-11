@@ -55,49 +55,49 @@ namespace USParks.WebMVC.Controllers
         }
 
 
-        public ActionResult Edit(int id)
-        {
-            var service = CreateParkNatureService();
-            var detail = service.GetParkNatureById(id);
-            var model =
-                new ParkNatureEdit()
-                {
-                    ParkNatureId = detail.ParkNatureId,
-                    NatureId = detail.NatureId,
-                    ParkId = detail.ParkId
-                };
-            return View(model);
-        }
+        //public ActionResult Edit(int id)
+        //{
+        //    var service = CreateParkNatureService();
+        //    var detail = service.GetParkNatureById(id);
+        //    var model =
+        //        new ParkNatureEdit()
+        //        {
+        //            ParkNatureId = detail.ParkNatureId,
+        //            NatureId = detail.NatureId,
+        //            ParkId = detail.ParkId
+        //        };
+        //    return View(model);
+        //}
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, ParkNatureEdit model)
-        {
-            if (!ModelState.IsValid) return View(model);
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Edit(int id, ParkNatureEdit model)
+        //{
+        //    if (!ModelState.IsValid) return View(model);
 
-            if (model.ParkNatureId != id)
-            {
-                ModelState.AddModelError("", "Id Mismatch");
-            }
+        //    if (model.ParkNatureId != id)
+        //    {
+        //        ModelState.AddModelError("", "Id Mismatch");
+        //    }
 
-            var service = CreateParkNatureService();
+        //    var service = CreateParkNatureService();
 
-            if (service.UpdateParkNature(model))
-            {
-                TempData["ParkNatureSaveResult"] = "Nature was updated for the park.";
-                return RedirectToAction("Index", "Park");
-            }
-            if (model.NatureId == id)
-            {
-                ModelState.AddModelError("", "Id wasn't updated");
-            }
-            if (model.NatureId != id)
-            {
-                ModelState.AddModelError("", "Please enter another valid nature id.");
-            }
+        //    if (service.UpdateParkNature(model))
+        //    {
+        //        TempData["ParkNatureSaveResult"] = "Nature was updated for the park.";
+        //        return RedirectToAction("Index", "Park");
+        //    }
+        //    if (model.NatureId == id)
+        //    {
+        //        ModelState.AddModelError("", "Id wasn't updated");
+        //    }
+        //    if (model.NatureId != id)
+        //    {
+        //        ModelState.AddModelError("", "Please enter another valid nature id.");
+        //    }
 
-            return View(model);
-        }
+        //    return View(model);
+        //}
 
         [ActionName("Delete")]
         public ActionResult Delete(int id)
