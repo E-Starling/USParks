@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using USParks.Data;
 using USParks.Models.Nature;
 
@@ -75,7 +73,7 @@ namespace USParks.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-               
+
                 var userNature = ctx.Nature.Where(e => e.OwnerId == _userId).ToArray();
                 foreach (var n in userNature)
                 {
@@ -109,7 +107,7 @@ namespace USParks.Services
                         return ctx.SaveChanges() == 1;
                     }
                 }
-                return false;              
+                return false;
             }
         }
     }

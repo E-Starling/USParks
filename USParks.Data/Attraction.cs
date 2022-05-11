@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace USParks.Data
 {
@@ -20,7 +16,7 @@ namespace USParks.Data
         [Required]
         public string Description { get; set; }
         [Required]
-        [Display(Name ="Park")]
+        [Display(Name = "Park")]
         [ForeignKey("Park")]
         public int ParkId { get; set; }
         public virtual Park Park { get; set; }

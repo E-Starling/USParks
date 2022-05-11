@@ -51,7 +51,10 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <p>
+        @Html.ActionLink("Back to Attraction List", "Index") |
+        @Html.ActionLink("Back to Park List", "Index", "Park")
+    </p>
 </div>
 
 @section Scripts {

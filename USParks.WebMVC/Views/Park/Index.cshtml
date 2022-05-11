@@ -9,27 +9,73 @@
 <p>
     @Html.ActionLink("Add Park", "Create")
 </p>
-@if (TempData.ContainsKey("Error"))
+@if (TempData.ContainsKey("ParkError"))
 {
     <div class="alert alert-warning fade in" role="alert">
 
         <button type="button" class="close" data-dismiss="alert">
             <span>&times;</span>
         </button>
-        @TempData["Error"]
+        @TempData["ParkError"]
     </div>
 }
 
-@if (TempData.ContainsKey("SaveResult"))
+@if (TempData.ContainsKey("ParkSaveResult"))
 {
     <div class="alert alert-success fade in" role="alert">
 
         <button type="button" class="close" data-dismiss="alert">
             <span>&times;</span>
         </button>
-        @TempData["SaveResult"]
+        @TempData["ParkSaveResult"]
     </div>
 }
+
+@if (TempData.ContainsKey("ParkNatureError"))
+{
+    <div class="alert alert-warning fade in" role="alert">
+
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        @TempData["ParkNatureError"]
+    </div>
+}
+
+@if (TempData.ContainsKey("ParkNatureSaveResult"))
+{
+    <div class="alert alert-success fade in" role="alert">
+
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        @TempData["ParkNatureSaveResult"]
+    </div>
+}
+
+@if (TempData.ContainsKey("AttractionError"))
+{
+    <div class="alert alert-warning fade in" role="alert">
+
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        @TempData["AttractionError"]
+    </div>
+}
+
+@if (TempData.ContainsKey("AttractionSaveResult"))
+{
+    <div class="alert alert-success fade in" role="alert">
+
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        @TempData["AttractionSaveResult"]
+    </div>
+}
+
+
 <table class="table">
     <tr>
         <th>

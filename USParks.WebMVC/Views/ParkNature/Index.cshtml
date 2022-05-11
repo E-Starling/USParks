@@ -9,27 +9,7 @@
 <p>
     @Html.ActionLink("Add Nature to Park", "Create")
 </p>
-@if (TempData.ContainsKey("Error"))
-{
-    <div class="alert alert-warning fade in" role="alert">
 
-        <button type="button" class="close" data-dismiss="alert">
-            <span>&times;</span>
-        </button>
-        @TempData["Error"]
-    </div>
-}
-
-@if (TempData.ContainsKey("SaveResult"))
-{
-    <div class="alert alert-success fade in" role="alert">
-
-        <button type="button" class="close" data-dismiss="alert">
-            <span>&times;</span>
-        </button>
-        @TempData["SaveResult"]
-    </div>
-}
 <table class="table">
     <tr>
         <th>
@@ -52,27 +32,27 @@
 
     @foreach (var item in Model)
     {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.NatureId)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.NatureName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ParkId)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ParkName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ParkNatureId)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.ParkNatureId }) |     
-        @Html.ActionLink("Delete", "Delete", new { id = item.ParkNatureId })
-    </td>
-</tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NatureId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NatureName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParkId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParkName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParkNatureId)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ParkNatureId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ParkNatureId })
+            </td>
+        </tr>
     }
 
 </table>

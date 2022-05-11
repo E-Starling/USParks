@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using USParks.Models.Attraction;
 using USParks.Services;
 
@@ -35,11 +31,11 @@ namespace USParks.WebMVC.Controllers
 
             if (service.CreateAttraction(model))
             {
-                TempData["SaveResult"] = "Attraction was added.";
-                return RedirectToAction("Index");
+                TempData["AttractionSaveResult"] = "Attraction was added.";
+                return RedirectToAction("Index", "Park");
             };
 
-            ModelState.AddModelError("", "Attraction couldn't be added.");
+            ModelState.AddModelError("", "Invalid Park Id.");
 
             return View(model);
         }
@@ -113,10 +109,10 @@ namespace USParks.WebMVC.Controllers
             if (service.UpdateAttraction(model))
             {
                 TempData["SaveResult"] = "Attraction was updated.";
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Park");
             }
             TempData["Error"] = "Can't update another user's Attraction.";
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Park");
 
         }
 
@@ -137,12 +133,12 @@ namespace USParks.WebMVC.Controllers
             var service = CreateAttractionService();
             if (!service.DeleteAttraction(id))
             {
-                TempData["Error"] = "Can't delete another user's Attraction.";
-                return RedirectToAction("Index");
+                TempData["AttractionError"] = "Can't delete another user's Attraction.";
+                return RedirectToAction("Index", "Park");
             }
             service.DeleteAttraction(id);
-            TempData["SaveResult"] = "Attraction was deleted!";
-            return RedirectToAction("Index");
+            TempData["AttractionSaveResult"] = "Attraction was deleted!";
+            return RedirectToAction("Index", "Park");
         }
 
         private AttractionService CreateAttractionService()

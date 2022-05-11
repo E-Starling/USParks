@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using USParks.Data;
 using USParks.Models.Attraction;
-using USParks.Models.Nature;
 using USParks.Models.Park;
 using USParks.Models.ParkNature;
 
@@ -138,9 +135,9 @@ namespace USParks.Services
                         }
                         foreach (var parknature in pk)
                         {
-                            if (parknature.ParkNatureId == parkId)                  
+                            if (parknature.ParkNatureId == parkId)
                                 ctx.ParkNatures.Remove(parknature);
-                            break;                          
+                            break;
                         }
                         ctx.Parks.Remove(entity);
                         return ctx.SaveChanges() == 1;

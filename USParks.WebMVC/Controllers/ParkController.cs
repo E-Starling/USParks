@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using USParks.Models.Park;
@@ -14,7 +11,7 @@ namespace USParks.WebMVC.Controllers
     {
         // GET: Nature
         public ActionResult Index()
-        {         
+        {
             var service = new ParkService();
             var model = service.GetPark();
             return View(model);
@@ -36,7 +33,7 @@ namespace USParks.WebMVC.Controllers
 
             if (service.CreatePark(model))
             {
-                TempData["SaveResult"] = "Park was added.";
+                TempData["ParkSaveResult"] = "Park was added.";
                 return RedirectToAction("Index");
             };
 
@@ -88,10 +85,10 @@ namespace USParks.WebMVC.Controllers
 
             if (service.UpdatePark(model))
             {
-                TempData["SaveResult"] = "Park was updated.";
+                TempData["ParkSaveResult"] = "Park was updated.";
                 return RedirectToAction("Index");
             }
-            TempData["Error"] = "Can't update another user's Park.";
+            TempData["ParkError"] = "Can't update another user's Park.";
             return RedirectToAction("Index");
         }
 
@@ -112,11 +109,11 @@ namespace USParks.WebMVC.Controllers
             var service = CreateParkService();
             if (!service.DeletePark(id))
             {
-                TempData["Error"] = "Can't delete another user's Park.";
+                TempData["ParkError"] = "Can't delete another user's Park.";
                 return RedirectToAction("Index");
             }
             service.DeletePark(id);
-            TempData["SaveResult"] = "Park was deleted!";
+            TempData["ParkSaveResult"] = "Park was deleted!";
             return RedirectToAction("Index");
         }
 

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using USParks.Models.Nature;
@@ -54,7 +51,7 @@ namespace USParks.WebMVC.Controllers
 
             if (service.CreateNature(model))
             {
-                TempData["SaveResult"] = "Nature was added.";
+                TempData["NatureSaveResult"] = "Nature was added.";
                 return RedirectToAction("Index");
             };
 
@@ -71,7 +68,7 @@ namespace USParks.WebMVC.Controllers
             return View(model);
         }
 
-        
+
         public ActionResult Edit(int id)
         {
             var service = CreateNatureService();
@@ -95,7 +92,7 @@ namespace USParks.WebMVC.Controllers
         {
             if (!ModelState.IsValid) return View(model);
 
-            if(model.NatureId != id)
+            if (model.NatureId != id)
             {
                 ModelState.AddModelError("", "Id Mismatch");
                 return View(model);
@@ -105,10 +102,10 @@ namespace USParks.WebMVC.Controllers
 
             if (service.UpdateNature(model))
             {
-                TempData["SaveResult"] = "Nature was updated.";
+                TempData["NatureSaveResult"] = "Nature was updated.";
                 return RedirectToAction("Index");
             }
-            TempData["Error"] = "Can't update another user's Nature item.";
+            TempData["NatureError"] = "Can't update another user's Nature item.";
             return RedirectToAction("Index");
             //ModelState.AddModelError("", "Cant update other user's nature items.");
             //return View(model);
@@ -131,11 +128,11 @@ namespace USParks.WebMVC.Controllers
             var service = CreateNatureService();
             if (!service.DeleteNature(id))
             {
-                TempData["Error"] = "Can't delete another user's Nature item";
+                TempData["NatureError"] = "Can't delete another user's Nature item";
                 return RedirectToAction("Index");
             }
             service.DeleteNature(id);
-            TempData["SaveResult"] = "Nature item was deleted";
+            TempData["NatureSaveResult"] = "Nature item was deleted";
             return RedirectToAction("Index");
         }
 

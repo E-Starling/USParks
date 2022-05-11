@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace USParks.Data
 {
@@ -27,6 +24,6 @@ namespace USParks.Data
         [Required]
         public int YearlyVisitors { get; set; }
         public virtual List<ParkNature> ParkNature { get; set; } = new List<ParkNature>();
-        public virtual List<Attraction> Attraction { get; set; }= new List<Attraction>();
+        public virtual List<Attraction> Attraction { get; set; } = new List<Attraction>();
     }
 }

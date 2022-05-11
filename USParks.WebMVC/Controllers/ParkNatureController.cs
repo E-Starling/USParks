@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
+﻿using System.Web.Mvc;
 using USParks.Models.ParkNature;
 using USParks.Services;
 
@@ -36,10 +31,11 @@ namespace USParks.WebMVC.Controllers
 
             if (service.CreateParkNature(model))
             {
-                TempData["SaveResult"] = "Nature was added to the park.";
-                return RedirectToAction("Index");
+                TempData["ParkNatureSaveResult"] = "Nature was added to the park.";
+                return RedirectToAction("Index", "Park");
             };
-
+            
+            
             ModelState.AddModelError("", "Nature couldn't be added to the park.");
 
             return View(model);
@@ -77,28 +73,24 @@ namespace USParks.WebMVC.Controllers
             if (model.ParkNatureId != id)
             {
                 ModelState.AddModelError("", "Id Mismatch");
-                return View(model);
             }
 
             var service = CreateParkNatureService();
-            
 
             if (service.UpdateParkNature(model))
             {
-                TempData["SaveResult"] = "Nature was updated for the park.";
+                TempData["ParkNatureSaveResult"] = "Nature was updated for the park.";
                 return RedirectToAction("Index", "Park");
             }
             if (model.NatureId == id)
             {
                 ModelState.AddModelError("", "Id wasn't updated");
-                return View(model);
             }
             if (model.NatureId != id)
             {
-                ModelState.AddModelError("","Please enter another valid nature id.");
-                return View(model);
+                ModelState.AddModelError("", "Please enter another valid nature id.");
             }
-            
+
             return View(model);
         }
 
@@ -118,7 +110,7 @@ namespace USParks.WebMVC.Controllers
         {
             var service = CreateParkNatureService();
             service.DeleteParkNature(id);
-            TempData["SaveResult"] = "Nature was removed from the park!";
+            TempData["ParkNatureSaveResult"] = "Nature was removed from the park!";
             return RedirectToAction("Index", "Park");
         }
 

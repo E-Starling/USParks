@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace USParks.Data
 {
     public class Nature
     {
         public enum KingdomType { Fauna, Flora, Funga }
-        public enum DietType { Herbivore, Carnivore, Omnivore, NA}
+        public enum DietType { Herbivore, Carnivore, Omnivore, NA }
         [Key]
         public int NatureId { get; set; }
         [Required]

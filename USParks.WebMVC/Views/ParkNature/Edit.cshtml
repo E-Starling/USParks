@@ -34,8 +34,15 @@
 }
 
 <div>
-    @Html.ActionLink("Details", "Details", "Park", new { id = Model.ParkId }, null) |
+    <p>
+        @Html.ActionLink("Back to park list", "Index", "Park") |
+        @Html.ActionLink("Nature list", "Index", "Nature") |
+        <form>
+            <input type="button" value="Go back!" onclick="history.back()">
+        </form>
+    </p>
 </div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace USParks.Models.Park
 {
@@ -15,7 +10,7 @@ namespace USParks.Models.Park
         public int ParkId { get; set; }
         public string Name { get; set; }
         [Display(Name = "Park Type")]
-        public ParkType parkType { get; set; }  
+        public ParkType parkType { get; set; }
         public string Location { get; set; }
     }
 }

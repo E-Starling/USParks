@@ -90,6 +90,7 @@
                     @Html.DisplayFor(modelnature => nature.NatureName)
                 </td>
                 <td>
+                    @Html.ActionLink("Details", "Details", "Nature", new { id = nature.NatureId }, null) |
                     @Html.ActionLink("Edit", "Edit", "ParkNature", new { id = nature.ParkNatureId }, null) |
                     @Html.ActionLink("Delete", "Delete", "ParkNature", new { id = nature.ParkNatureId }, null) |
                 </td>
