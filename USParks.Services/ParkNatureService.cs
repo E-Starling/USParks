@@ -21,6 +21,23 @@ namespace USParks.Services
             {
                 var parks = ctx.Parks.ToArray();
                 var nature = ctx.Nature.ToArray();
+                var parknatures = ctx.ParkNatures.ToArray();
+
+                //foreach (var pi in parknatures)
+                //{
+                //    if (pi.ParkId == model.ParkId)
+                //    {
+                //        foreach (var pn in parknatures)
+                //        {
+                //            if (pn.NatureId == model.NatureId)
+                //            {
+                //                return false;
+                //            }
+                //        }
+                //    }
+                //}
+
+
                 foreach (var p in parks)
                 {
                     if (p.ParkId == model.ParkId)
@@ -29,6 +46,16 @@ namespace USParks.Services
                         {
                             if (n.NatureId == model.NatureId)
                             {
+                                foreach (var pi in parknatures)
+                                {
+                                    if (pi.ParkId == model.ParkId)
+                                    {
+                                            if (pi.NatureId == model.NatureId)
+                                            {
+                                                return false;
+                                            }                                       
+                                    }
+                                }
                                 var entity = new ParkNature()
                                 {
                                     NatureId = model.NatureId,
@@ -95,27 +122,9 @@ namespace USParks.Services
                                 ParkName = entity.Park.Name
                             };
                     }
-
-
-
-
                 }
                 return null;
             }
-
-            //using (var ctx = new ApplicationDbContext())
-            //{
-            //    var entity = ctx.ParkNatures.Single(e => e.ParkNatureId == id);
-            //    return
-            //                new ParkNatureDetail()
-            //                {
-            //                    ParkNatureId = entity.ParkNatureId,
-            //                    NatureId = entity.NatureId,
-            //                    NatureName = entity.Nature.Name,
-            //                    ParkId = entity.ParkId,
-            //                    ParkName = entity.Park.Name
-            //                };
-            //}
         }
 
         public bool UpdateParkNature(ParkNatureEdit model)

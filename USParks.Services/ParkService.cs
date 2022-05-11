@@ -11,7 +11,6 @@ namespace USParks.Services
     public class ParkService
     {
         private readonly Guid _userId;
-
         public ParkService() { }
         public ParkService(Guid userId)
         {

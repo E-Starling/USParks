@@ -34,7 +34,12 @@ namespace USParks.WebMVC.Controllers
                 TempData["ParkNatureSaveResult"] = "Nature was added to the park.";
                 return RedirectToAction("Index", "Park");
             };
-            
+            if (!service.CreateParkNature(model))
+            {
+                ModelState.AddModelError("", "The Nature already is in the park!");
+                return View(model);
+            }
+
             
             ModelState.AddModelError("", "Nature couldn't be added to the park.");
 

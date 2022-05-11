@@ -108,10 +108,10 @@ namespace USParks.WebMVC.Controllers
 
             if (service.UpdateAttraction(model))
             {
-                TempData["SaveResult"] = "Attraction was updated.";
+                TempData["AttractionSaveResult"] = "Attraction was updated.";
                 return RedirectToAction("Index", "Park");
             }
-            TempData["Error"] = "Can't update another user's Attraction.";
+            TempData["AttractionError"] = "Can't update another user's Attraction.";
             return RedirectToAction("Index", "Park");
 
         }
