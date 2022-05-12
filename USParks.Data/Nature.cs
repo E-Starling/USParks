@@ -6,7 +6,7 @@ namespace USParks.Data
     public class Nature
     {
         public enum KingdomType { Fauna, Flora, Funga }
-        public enum DietType { Herbivore, Carnivore, Omnivore, NA }
+        public enum DietType { Herbivore, Carnivore, Omnivore, Other }
         [Key]
         public int NatureId { get; set; }
         [Required]

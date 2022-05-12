@@ -4,8 +4,8 @@ namespace USParks.Models.Nature
 {
     public class NatureCreate
     {
-        public enum KingdomType { fauna, flora, funga }
-        public enum DietType { herbivore, carnivore, omnivore, other }
+        public enum KingdomType { Fauna, Flora, Funga }
+        public enum DietType { Herbivore, Carnivore, Omnivore, Other }
         [Required]
         [MaxLength(50, ErrorMessage = "There are too many characters in this field.")]
         public string Name { get; set; }

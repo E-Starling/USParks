@@ -4,7 +4,8 @@ namespace USParks.Models.Nature
 {
     public class NatureListItem
     {
-        public enum KingdomType { fauna, flora, funga }
+        
+        public enum KingdomType { Fauna, Flora, Funga }
         [Display(Name = "Nature Id")]
         public int NatureId { get; set; }
         public string Name { get; set; }
