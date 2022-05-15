@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Web;
 using USParks.Data;
 using USParks.Models.Attraction;
 using USParks.Models.Park;
@@ -16,9 +18,12 @@ namespace USParks.Services
         {
             _userId = userId;
         }
+     
 
-        public bool CreatePark(ParkCreate model)
+        public int CreatePark(HttpPostedFileBase file, ParkCreate model)
         {
+            model.Image = ConvertToBytes(file);
+
             var entity = new Park()
             {
                 OwnerId = _userId,
@@ -27,14 +32,20 @@ namespace USParks.Services
                 Description = model.Description,
                 Location = model.Location,
                 Size = model.Size,
-                YearlyVisitors = model.YearlyVisitors
+                YearlyVisitors = model.YearlyVisitors,
+                Image = model.Image
             };
 
 
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Parks.Add(entity);
-                return ctx.SaveChanges() == 1;
+                int i = ctx.SaveChanges();
+                if (i == 1)
+
+                    return 1;
+                else
+                    return 0;
             }
         }
 
@@ -47,7 +58,8 @@ namespace USParks.Services
                     ParkId = e.ParkId,
                     Name = e.Name,
                     parkType = (ParkListItem.ParkType)e.parkType,
-                    Location = e.Location
+                    Location = e.Location,
+                    Image = e.Image
                 });
                 return query.ToArray();
             }
@@ -84,6 +96,7 @@ namespace USParks.Services
                                     AttractionId = a.AttractionId,
                                     Name = a.Name
                                 }).ToList(),
+                                Image = entity.Image
                             };
                     }
                 }
@@ -105,7 +118,6 @@ namespace USParks.Services
                         entity.parkType = (Park.ParkType)model.parkType;
                         entity.Description = model.Description;
                         entity.Location = model.Location;
-                        entity.Size = model.Size;
                         entity.Size = model.Size;
                         return ctx.SaveChanges() == 1;
                     }
@@ -143,6 +155,24 @@ namespace USParks.Services
                     }
                 }
                 return false;
+            }
+        }
+
+        public byte[] ConvertToBytes(HttpPostedFileBase image)
+        {
+            byte[] imageBytes = null;
+            BinaryReader reader = new BinaryReader(image.InputStream);
+            imageBytes = reader.ReadBytes((int)image.ContentLength);
+            return imageBytes;
+        }
+
+        public byte[] GetImageFromDataBase(int Id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var q = from temp in ctx.Parks where temp.ParkId == Id select temp.Image;
+                byte[] cover = q.First();
+                return cover;
             }
         }
     }

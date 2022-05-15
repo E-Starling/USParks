@@ -16,7 +16,7 @@ namespace USParks.Models.Park
         public string Description { get; set; }
         [MaxLength(50, ErrorMessage = "There are too many characters in this field.")]
         public string Location { get; set; }
-        [Display(Name = "Size (square miles)")]
+        [Display(Name = "Size (mi²)")]
         [Range(0, 20000, ErrorMessage = "Please enter a number between 0 and 20 thousand.")]
         public int Size { get; set; }
         [Display(Name = "Yearly Visitors")]

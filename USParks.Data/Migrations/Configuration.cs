@@ -9,7 +9,7 @@
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "USParks.Data.ApplicationDbContext";
         }
 
@@ -81,7 +81,10 @@
                     parkType = Park.ParkType.national,
                     Description = "Isle Royale National Park is a remote island cluster in Lake Superior, near Michigan’s border with Canada." +
                     " It’s a car-free wilderness of forests, lakes and waterways, where moose and wolves roam. The Greenstone Ridge Trail links the Windigo Harbor in the west and Rock Harbor in the east." +
-                    " The 19th-century Rock Harbor Lighthouse has a small museum. Dive sites in the lake include several shipwrecks."
+                    " The 19th-century Rock Harbor Lighthouse has a small museum. Dive sites in the lake include several shipwrecks.",
+                    Location = "Michigan",
+                    Size = 893,
+                    YearlyVisitors = 18216
                 }
 
                 );

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
+
+
 namespace USParks.Data
 {
     public class Park
@@ -23,6 +25,9 @@ namespace USParks.Data
         public int Size { get; set; }
         [Required]
         public int YearlyVisitors { get; set; }
+
+        public byte[] Image { get; set; }
+
         public virtual List<ParkNature> ParkNature { get; set; } = new List<ParkNature>();
         public virtual List<Attraction> Attraction { get; set; } = new List<Attraction>();
     }

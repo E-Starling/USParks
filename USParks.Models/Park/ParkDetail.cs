@@ -15,10 +15,13 @@ namespace USParks.Models.Park
         public ParkType parkType { get; set; }
         public string Description { get; set; }
         public string Location { get; set; }
-        [Display(Name = "Size (miles)")]
+        [Display(Name = "Size (mi²)")]
         public int Size { get; set; }
         [Display(Name = "Yearly Visitors")]
         public int YearlyVisitors { get; set; }
+
+        public byte[] Image { get; set; }
+
         public virtual List<ParkNatureListItem> Nature { get; set; } = new List<ParkNatureListItem>();
         public virtual List<AttractionListItem> Attractions { get; set; } = new List<AttractionListItem>();
     }

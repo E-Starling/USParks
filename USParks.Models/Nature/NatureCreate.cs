@@ -21,5 +21,6 @@ namespace USParks.Models.Nature
         [Required]
         [Display(Name = "Diet (herbivore, carnivore, omnivore, other)")]
         public DietType? Diet { get; set; }
+       
     }
 }

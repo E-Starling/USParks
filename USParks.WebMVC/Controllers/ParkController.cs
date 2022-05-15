@@ -1,6 +1,9 @@
 ﻿using System;
+using System.IO;
+using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using USParks.Data;
 using USParks.Models.Park;
 using USParks.Services;
 
@@ -9,7 +12,7 @@ namespace USParks.WebMVC.Controllers
     [Authorize]
     public class ParkController : Controller
     {
-        // GET: Nature
+        // GET: Park
         public ActionResult Index()
         {
             var service = new ParkService();
@@ -22,7 +25,7 @@ namespace USParks.WebMVC.Controllers
         {
             return View();
         }
-        // POST: Create
+        // POST: Create Park
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(ParkCreate model)
@@ -31,19 +34,23 @@ namespace USParks.WebMVC.Controllers
 
             var service = CreateParkService();
 
-            if (service.CreatePark(model))
+            HttpPostedFileBase file = Request.Files["ImageData"];
+
+            int i = service.CreatePark(file, model);
+            if (i == 1)
             {
                 TempData["ParkSaveResult"] = "Park was added.";
                 return RedirectToAction("Index");
-            };
 
+            }
             ModelState.AddModelError("", "Park could not be added.");
+
 
             return View(model);
         }
 
         public ActionResult Details(int id)
-        {
+        { 
             var svc = CreateParkService();
             var model = svc.GetParkById(id);
 
@@ -123,5 +130,24 @@ namespace USParks.WebMVC.Controllers
             var service = new ParkService(userId);
             return service;
         }
+
+      
+      
+
+        public ActionResult RetrieveImage(int id)
+        {
+            var service = CreateParkService();
+            
+            byte[] cover = service.GetImageFromDataBase(id);
+            if (cover != null)
+            {
+                return File(cover, "image/jpg");
+            }
+            else
+            {
+                return null;
+            }
+        }
+       
     }
 }

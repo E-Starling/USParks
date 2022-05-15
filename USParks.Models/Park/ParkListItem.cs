@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
+
 namespace USParks.Models.Park
 {
     public class ParkListItem
@@ -12,5 +13,6 @@ namespace USParks.Models.Park
         [Display(Name = "Park Type")]
         public ParkType parkType { get; set; }
         public string Location { get; set; }
+        public byte[] Image { get; set; }
     }
 }

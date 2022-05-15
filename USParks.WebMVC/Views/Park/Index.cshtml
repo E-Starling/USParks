@@ -90,6 +90,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Location)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
         <th></th>
     </tr>
 
@@ -108,6 +111,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Location)
             </td>
+            <td>
+                <img src="/Park/RetrieveImage/@item.ParkId" alt="" height=100 width=200 />
+             </td>
             <td>
                 @Html.ActionLink("Details", "Details", new { id = item.ParkId }) |
                 @Html.ActionLink("Edit", "Edit", new { id = item.ParkId }) |
