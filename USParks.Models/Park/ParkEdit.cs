@@ -22,5 +22,7 @@ namespace USParks.Models.Park
         [Display(Name = "Yearly Visitors")]
         [Range(0, 200000000, ErrorMessage = "Please enter a number between 0 and 20 million.")]
         public int YearlyVisitors { get; set; }
+        [Display(Name = "Upload an image .png |.jpg | 3 MB Limit")]
+        public byte[] Image { get; set; }
     }
 }

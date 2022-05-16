@@ -3,6 +3,7 @@
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
+    using System.IO;
     using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<USParks.Data.ApplicationDbContext>
@@ -12,7 +13,29 @@
             AutomaticMigrationsEnabled = true;
             ContextKey = "USParks.Data.ApplicationDbContext";
         }
+        public static byte[] ReadFile(string sPath)
+        {
+            //Initialize byte array with a null value initially.
+            byte[] data = null;
 
+            //Use FileInfo object to get file size.
+            FileInfo fInfo = new FileInfo(sPath);
+            long numBytes = fInfo.Length;
+
+            //Open FileStream to read file
+            FileStream fStream = new FileStream(sPath, FileMode.Open, FileAccess.Read);
+
+            //Use BinaryReader to read file stream into byte array.
+            BinaryReader br = new BinaryReader(fStream);
+
+            //When you use BinaryReader, you need to supply number of bytes 
+            //to read from file.
+            //In this case we want to read entire file. 
+            //So supplying total number of bytes.
+            data = br.ReadBytes((int)numBytes);
+
+            return data;
+        }
         protected override void Seed(USParks.Data.ApplicationDbContext context)
         {
             context.Parks.AddOrUpdate(x => x.ParkId,
@@ -26,7 +49,8 @@
                     " gushing geysers, including its most famous, Old Faithful. It's also home to hundreds of animal species, including bears, wolves, bison, elk and antelope.",
                     Location = "Wyoming/Montana/Idaho",
                     Size = 3471,
-                    YearlyVisitors = 4860000
+                    YearlyVisitors = 4860000,
+                    Image = ReadFile("C:/Users/tomal/Desktop/RedBadgeFinal/USParks/USParks.Data/Images/yellowstone.jfif")
                 },
                 new Park()
                 {
@@ -39,7 +63,8 @@
                     " Lipan Point, with wide views of the canyon and Colorado River, is a popular, especially at sunrise and sunset.",
                     Location = "Arizona",
                     Size = 1902,
-                    YearlyVisitors = 5900000
+                    YearlyVisitors = 5900000,
+                    Image = ReadFile("C:/Users/tomal/Desktop/RedBadgeFinal/USParks/USParks.Data/Images/grandcaynon.jpg")
                 },
                 new Park()
                 {
@@ -50,7 +75,8 @@
                     " the park includes the major peaks of the 40-mile-long (64 km) Teton Range as well as most of the northern sections of the valley known as Jackson Hole.",
                     Location = "Wyoming",
                     Size = 485,
-                    YearlyVisitors = 3890000
+                    YearlyVisitors = 3890000,
+                    Image = ReadFile("C:/Users/tomal/Desktop/RedBadgeFinalProject/USParks.Data/Images/grandteton.jpg")
                 },
                 new Park()
                 {
@@ -61,7 +87,8 @@
                     " Trails are open from dawn to dusk. To get to many hiking trails you need to cross the suspension bridge over Sugar Creek.",
                     Location = "Indiana",
                     Size = 4,
-                    YearlyVisitors = 1000000
+                    YearlyVisitors = 1000000,
+                    Image = ReadFile("C:/Users/tomal/Desktop/RedBadgeFinal/USParks/USParks.Data/Images/turkeyrun.jpg")
                 },
                 new Park()
                 {
@@ -72,7 +99,8 @@
                     " It was authorized by Congress in 1966 as the Indiana Dunes National Lakeshore and was redesignated as the nation's 61st national park on February 15, 2019.",
                     Location = "Indiana",
                     Size = 24,
-                    YearlyVisitors = 3180000
+                    YearlyVisitors = 3180000,
+                    Image = ReadFile("C:/Users/tomal/Desktop/RedBadgeFinal/USParks/USParks.Data/Images/indianadunes.jpg")
                 },
                 new Park()
                 {
@@ -84,7 +112,8 @@
                     " The 19th-century Rock Harbor Lighthouse has a small museum. Dive sites in the lake include several shipwrecks.",
                     Location = "Michigan",
                     Size = 893,
-                    YearlyVisitors = 18216
+                    YearlyVisitors = 18216,
+                    Image = ReadFile("C:/Users/tomal/Desktop/RedBadgeFinal/USParks/USParks.Data/Images/isleroyal.jpg")
                 }
 
                 );
