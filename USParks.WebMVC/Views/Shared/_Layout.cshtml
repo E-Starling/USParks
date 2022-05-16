@@ -2,44 +2,229 @@
 <html>
 <head>
     <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <title>@ViewBag.Title - Ethan Starling US Parks</title>
+    @*@Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")*@
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Styles -->
+    <style>
+
+        /*
+        * Base
+        */
+
+        body {
+            padding-top: 50px;
+        }
+
+
+
+
+        .sub-header {
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+
+        .navbar-fixed-top {
+            border: 0;
+            background-color: #3e7a23;
+        }
+
+        .profile {
+            padding-right: 20px;
+        }
+
+        .buffer{
+            background-color: #313e59;
+           
+            color: snow;
+            font-family:'Comic Sans MS';
+            margin-left:165px;
+            padding-bottom:15px;
+            padding-top:15px;
+            padding-right: 10px;
+            padding-left: 10px;
+    
+        }
+
+        /*
+        * Sidebar
+        */
+
+
+        
+
+        .sidebar {
+            position: fixed;
+            top: 50px;
+            
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+            display: block;
+            padding: 20px;
+            padding-top: 10px;
+            padding-right: 21px;
+            overflow-x: hidden;
+            overflow-y: auto; /* Scrollable stuff if short view. */
+            background-color: #3e7a23;
+            border-right: 1px solid #eee;
+            width: 180px;
+            font-family:'Comic Sans MS'
+        }
+
+        .usparkslogo {
+            padding-left: 20px;
+        }
+
+        /* Sidebar navigation */
+        .nav-sidebar {
+            margin-right: -21px;
+            margin-bottom: 20px;
+            margin-left: -20px;
+        }
+
+            .nav-sidebar > li > a {
+                padding-right: 20px;
+                padding-left: 20px;
+            }
+
+            .nav-sidebar > .active > a,
+            .nav-sidebar > .active > a:hover,
+            .nav-sidebar > .active > a:focus {
+                color: #fff;
+                background-color: #3f9068;
+            }
+
+        .hovering:hover {
+            background-color: blueviolet;
+        }
+
+        .navpad {
+            padding-left: 10px;
+            color: snow;
+        }
+
+        .navitems {
+            color: snow;
+            font-size: 14px;
+            font-family: 'Comic Sans MS'
+        }
+        .navitems:hover{
+            color:#00efbc
+        }
+        /*
+        * Main content
+        */
+        .main {
+            padding: 20px;
+        }
+        .container {
+            padding: 20px;
+            padding-right: 40px;
+            padding-left: 220px;
+        }
+        .container-fluid{
+            padding-right:0px;
+        }
+
+        .main {
+            padding-right: 40px;
+            padding-left: 220px;
+        }
+
+            .main .page-header {
+                margin-top: 0;
+            }
+
+
+        /*
+        * Placeholder dashboard ideas
+        */
+
+        .placeholders {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+            .placeholders h4 {
+                margin-bottom: 0;
+            }
+
+        .placeholder {
+            margin-bottom: 20px;
+        }
+
+            .placeholder img {
+                display: inline-block;
+                border-radius: 50%;
+            }
+    </style>
 
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+<body style="background-color:#172136">
+    <nav class="navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <div class="buffer">@ViewBag.Title</div>
+
             </div>
+
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Park", "Index", "Park")</li>
-                    <li>@Html.ActionLink("Nature", "Index", "Nature")</li> 
-                    <li>@Html.ActionLink("Attraction", "Index", "Attraction")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <div class="profile">
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="sidebar">
+                <ul class="nav nav-sidebar">
+                    <li class="usparkslogo">
+                        <img src="~/Content/Images/USParks.png" />
+                    </li>
+                    <li>
+                        <h4 class="navpad">Navigation</h4>
+                    </li>
+                    <li>
+                        @Html.ActionLink("Main Page", "Index", "Home", new { area = "" }, new { @class = "navitems" })
+                    </li>
+                    <li>
+                        @Html.ActionLink("Park List", "Index", "Park", new { area = "" }, new { @class = "navitems" })
+                    </li>
+                    <li>
+                        @Html.ActionLink("Nature List", "Index", "Nature", new { area = "" }, new { @class = "navitems" })
+                    </li>
+                    <li>
+                        @Html.ActionLink("Back", null, null, null, new { href = Request.UrlReferrer, @class = "navitems" })
+                    </li>
+                    <li>
+                        @Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "navitems" })
+                    </li>
+                    <li>
+                        @Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "navitems" })
+                    </li>
                 </ul>
-                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container body-content" style="background-color: #172136">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        <footer class="navitems">
+            <p>&copy; @DateTime.Now.Year - Ethan Starling US Parks</p>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

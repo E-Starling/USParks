@@ -50,7 +50,7 @@
                     Location = "Wyoming/Montana/Idaho",
                     Size = 3471,
                     YearlyVisitors = 4860000,
-                    Image = ReadFile("C:/Users/tomal/Desktop/RedBadgeFinal/USParks/USParks.Data/Images/yellowstone.jfif")
+                    Image = File.ReadAllBytes("../../Images/yellowstone.jfif")
                 },
                 new Park()
                 {
@@ -64,7 +64,7 @@
                     Location = "Arizona",
                     Size = 1902,
                     YearlyVisitors = 5900000,
-                    Image = ReadFile("C:/Users/tomal/Desktop/RedBadgeFinal/USParks/USParks.Data/Images/grandcaynon.jpg")
+                    Image = ReadFile("../../Images/grandcaynon.jpg")
                 },
                 new Park()
                 {
@@ -76,7 +76,7 @@
                     Location = "Wyoming",
                     Size = 485,
                     YearlyVisitors = 3890000,
-                    Image = ReadFile("C:/Users/tomal/Desktop/RedBadgeFinalProject/USParks.Data/Images/grandteton.jpg")
+                    Image = ReadFile("../../Images/grandteton.jpg")
                 },
                 new Park()
                 {
@@ -88,7 +88,7 @@
                     Location = "Indiana",
                     Size = 4,
                     YearlyVisitors = 1000000,
-                    Image = ReadFile("C:/Users/tomal/Desktop/RedBadgeFinal/USParks/USParks.Data/Images/turkeyrun.jpg")
+                    Image = ReadFile("../../Images/turkeyrun.jpg")
                 },
                 new Park()
                 {
@@ -100,7 +100,7 @@
                     Location = "Indiana",
                     Size = 24,
                     YearlyVisitors = 3180000,
-                    Image = ReadFile("C:/Users/tomal/Desktop/RedBadgeFinal/USParks/USParks.Data/Images/indianadunes.jpg")
+                    Image = ReadFile("../../Images/indianadunes.jpg")
                 },
                 new Park()
                 {
@@ -113,7 +113,7 @@
                     Location = "Michigan",
                     Size = 893,
                     YearlyVisitors = 18216,
-                    Image = ReadFile("C:/Users/tomal/Desktop/RedBadgeFinal/USParks/USParks.Data/Images/isleroyal.jpg")
+                    Image = ReadFile("../../Images/isleroyal.jpg")
                 }
 
                 );
