@@ -1,0 +1,139 @@
+﻿@model USParks.Models.Park.ParkDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ParkDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ParkId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParkId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.parkType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.parkType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Size)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Size)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YearlyVisitors)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YearlyVisitors)
+        </dd>
+    </dl>
+    <table class="table">
+        <caption>Nature found within the park</caption>
+        <p>
+            @Html.ActionLink("Add Nature to Park", "Create", "ParkNature")
+        </p>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nature.First().NatureId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nature.First().NatureName)
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var nature in Model.Nature)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelnature => nature.NatureId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelnature => nature.NatureName)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", "Nature", new { id = nature.NatureId }, null) |
+                    @*@Html.ActionLink("Edit", "Edit", "ParkNature", new { id = nature.ParkNatureId }, null) |*@
+                    @Html.ActionLink("Delete", "Delete", "ParkNature", new { id = nature.ParkNatureId }, null) |
+                </td>
+            </tr>
+        }
+
+    </table>
+    <table class="table">
+        <caption>Attractions found within the park</caption>
+
+            <p>
+                @Html.ActionLink("Add Attraction to Park", "Create", "Attraction")
+            </p>
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Attractions.First().AttractionId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Attractions.First().Name)
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var attraction in Model.Attractions)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelattraction => attraction.AttractionId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelattraction => attraction.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", "Attraction", new { id = attraction.AttractionId }, null) |
+                    @Html.ActionLink("Edit", "Edit", "Attraction", new { id = attraction.AttractionId }, null) |
+                    @Html.ActionLink("Delete", "Delete", "Attraction", new { id = attraction.AttractionId }, null) |
+
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ParkId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

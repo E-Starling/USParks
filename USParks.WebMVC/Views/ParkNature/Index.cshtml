@@ -1,0 +1,57 @@
+﻿@model IEnumerable<USParks.Models.ParkNature.ParkNatureListItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List of Nature found within Parks</h2>
+
+<p>
+    @Html.ActionLink("Add Nature to Park", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NatureId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NatureName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParkId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParkName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParkNatureId)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NatureId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NatureName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParkId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParkName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParkNatureId)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ParkNatureId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ParkNatureId })
+            </td>
+        </tr>
+    }
+</table>

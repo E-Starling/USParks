@@ -1,0 +1,124 @@
+﻿@model IEnumerable<USParks.Models.Park.ParkListItem>
+
+@{
+    ViewBag.Title = "Park Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Add Park", "Create")
+</p>
+@if (TempData.ContainsKey("ParkError"))
+{
+    <div class="alert alert-warning fade in" role="alert">
+
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        @TempData["ParkError"]
+    </div>
+}
+
+@if (TempData.ContainsKey("ParkSaveResult"))
+{
+    <div class="alert alert-success fade in" role="alert">
+
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        @TempData["ParkSaveResult"]
+    </div>
+}
+
+@if (TempData.ContainsKey("ParkNatureError"))
+{
+    <div class="alert alert-warning fade in" role="alert">
+
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        @TempData["ParkNatureError"]
+    </div>
+}
+
+@if (TempData.ContainsKey("ParkNatureSaveResult"))
+{
+    <div class="alert alert-success fade in" role="alert">
+
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        @TempData["ParkNatureSaveResult"]
+    </div>
+}
+
+@if (TempData.ContainsKey("AttractionError"))
+{
+    <div class="alert alert-warning fade in" role="alert">
+
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        @TempData["AttractionError"]
+    </div>
+}
+
+@if (TempData.ContainsKey("AttractionSaveResult"))
+{
+    <div class="alert alert-success fade in" role="alert">
+
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        @TempData["AttractionSaveResult"]
+    </div>
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ParkId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.parkType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParkId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.parkType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                <img src="/Park/RetrieveImage/@item.ParkId" alt="" height=100 width=200 />
+             </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.ParkId }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.ParkId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ParkId })
+            </td>
+        </tr>
+    }
+</table>

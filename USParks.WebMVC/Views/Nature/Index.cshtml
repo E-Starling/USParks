@@ -1,0 +1,72 @@
+﻿@model IEnumerable<USParks.Models.Nature.NatureListItem>
+
+@{
+    ViewBag.Title = "Nature Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Add nature item", "Create")
+</p>
+@if (TempData.ContainsKey("NatureError"))
+{
+    <div class="alert alert-warning fade in" role="alert">
+
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        @TempData["NatureError"]
+    </div>
+}
+
+@if (TempData.ContainsKey("NatureSaveResult"))
+{
+    <div class="alert alert-success fade in" role="alert">
+
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        @TempData["NatureSaveResult"]
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NatureId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kingdom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Class)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NatureId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kingdom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Class)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.NatureId }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.NatureId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.NatureId })
+            </td>
+        </tr>
+    }
+</table>
