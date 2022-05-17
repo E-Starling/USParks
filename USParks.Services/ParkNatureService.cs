@@ -7,13 +7,7 @@ namespace USParks.Services
 {
     public class ParkNatureService
     {
-        // private readonly Guid _userId;
-
         public ParkNatureService() { }
-        //public ParkNatureService(Guid userId)
-        //{
-        //    _userId = userId;
-        //}
 
         public bool CreateParkNature(ParkNatureCreate model)
         {
@@ -22,22 +16,6 @@ namespace USParks.Services
                 var parks = ctx.Parks.ToArray();
                 var nature = ctx.Nature.ToArray();
                 var parknatures = ctx.ParkNatures.ToArray();
-
-                //foreach (var pi in parknatures)
-                //{
-                //    if (pi.ParkId == model.ParkId)
-                //    {
-                //        foreach (var pn in parknatures)
-                //        {
-                //            if (pn.NatureId == model.NatureId)
-                //            {
-                //                return false;
-                //            }
-                //        }
-                //    }
-                //}
-
-
                 foreach (var p in parks)
                 {
                     if (p.ParkId == model.ParkId)
@@ -69,21 +47,6 @@ namespace USParks.Services
                 }
                 return false;
             }
-
-
-            //var entity = new ParkNature()
-            //{
-            //    NatureId = model.NatureId,
-            //    ParkId = model.ParkId,
-            //};
-
-
-            //using (var ctx = new ApplicationDbContext())
-            //{
-            //    ctx.ParkNatures.Add(entity);
-            //    return ctx.SaveChanges() == 1;
-            //}
-
         }
 
         public IEnumerable<ParkNatureListItem> GetParkNature()
@@ -126,26 +89,6 @@ namespace USParks.Services
                 return null;
             }
         }
-
-        //public bool UpdateParkNature(ParkNatureEdit model)
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var nature = ctx.Nature.ToArray();
-        //        var entity = ctx.ParkNatures.Single(e => e.ParkNatureId == model.ParkNatureId);
-        //        foreach (var n in nature)
-        //        {
-        //            if (n.NatureId == model.NatureId)
-        //            {
-        //                entity.ParkNatureId = model.ParkNatureId;
-        //                entity.NatureId = model.NatureId;
-        //                ctx.Entry(entity).Property(u => u.ParkId).IsModified = false;
-        //                return ctx.SaveChanges() == 1;
-        //            }
-        //        }
-        //        return false;
-        //    }
-        //}
 
         public bool DeleteParkNature(int parkNatureId)
         {

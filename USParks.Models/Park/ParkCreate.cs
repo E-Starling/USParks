@@ -5,7 +5,7 @@ namespace USParks.Models.Park
 {
     public class ParkCreate
     {
-        public enum ParkType { national, state }
+        public enum ParkType { National, State }
         [Required]
         [MaxLength(50, ErrorMessage = "There are too many characters in this field.")]
         public string Name { get; set; }

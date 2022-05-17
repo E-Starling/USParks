@@ -19,11 +19,9 @@ namespace USParks.Services
             _userId = userId;
         }
      
-
         public int CreatePark(HttpPostedFileBase file, ParkCreate model)
         {
             model.Image = ConvertToBytes(file);
-
             var entity = new Park()
             {
                 OwnerId = _userId,
@@ -36,13 +34,11 @@ namespace USParks.Services
                 Image = model.Image
             };
 
-
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Parks.Add(entity);
                 int i = ctx.SaveChanges();
                 if (i == 1)
-
                     return 1;
                 else
                     return 0;
@@ -104,8 +100,9 @@ namespace USParks.Services
             }
         }
 
-        public bool UpdatePark(ParkEdit model)
+        public bool UpdatePark(HttpPostedFileBase file, ParkEdit model)
         {
+            model.Image = ConvertToBytes(file);
             using (var ctx = new ApplicationDbContext())
             {
                 var userPark = ctx.Parks.Where(e => e.OwnerId == _userId).ToArray();
@@ -119,6 +116,7 @@ namespace USParks.Services
                         entity.Description = model.Description;
                         entity.Location = model.Location;
                         entity.Size = model.Size;
+                        entity.Image = model.Image;
                         return ctx.SaveChanges() == 1;
                     }
                 }

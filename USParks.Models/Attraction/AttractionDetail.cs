@@ -13,5 +13,6 @@ namespace USParks.Models.Attraction
         public int ParkId { get; set; }
         [Display(Name = "Park Name")]
         public string ParkName { get; set; }
+        public byte[] Image { get; set; }
     }
 }

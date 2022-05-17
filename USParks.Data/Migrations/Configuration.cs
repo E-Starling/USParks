@@ -43,7 +43,7 @@
                 {
                     ParkId = 1,
                     Name = "Yellowstone",
-                    parkType = Park.ParkType.national,
+                    parkType = Park.ParkType.National,
                     Description = "Yellowstone National Park is a nearly 3,500-sq.-mile wilderness recreation area atop a volcanic hot spot. Mostly in Wyoming," +
                     " the park spreads into parts of Montana and Idaho too. Yellowstone features dramatic canyons, alpine rivers, lush forests, hot springs and" +
                     " gushing geysers, including its most famous, Old Faithful. It's also home to hundreds of animal species, including bears, wolves, bison, elk and antelope.",
@@ -56,7 +56,7 @@
                 {
                     ParkId = 2,
                     Name = "Grand Caynon",
-                    parkType = Park.ParkType.national,
+                    parkType = Park.ParkType.National,
                     Description = "Grand Canyon National Park, in Arizona, is home to much of the immense Grand Canyon," +
                     " with its layered bands of red rock revealing millions of years of geological history." +
                     " Viewpoints include Mather Point, Yavapai Observation Station and architect Mary Colter’s Lookout Studio and her Desert View Watchtower." +
@@ -70,7 +70,7 @@
                 {
                     ParkId = 3,
                     Name = "Grand Teton",
-                    parkType = Park.ParkType.national,
+                    parkType = Park.ParkType.National,
                     Description = "Grand Teton National Park is an American national park in northwestern Wyoming. At approximately 310,000 acres (1,300 km2)," +
                     " the park includes the major peaks of the 40-mile-long (64 km) Teton Range as well as most of the northern sections of the valley known as Jackson Hole.",
                     Location = "Wyoming",
@@ -82,7 +82,7 @@
                 {
                     ParkId = 4,
                     Name = "Turkey Run",
-                    parkType = Park.ParkType.state,
+                    parkType = Park.ParkType.State,
                     Description = "Deep canyons nestled in the shadows of sandstone cliffs and peaceful hemlock groves harbor some of the most ruggedly beautiful hiking trails in the state." +
                     " Trails are open from dawn to dusk. To get to many hiking trails you need to cross the suspension bridge over Sugar Creek.",
                     Location = "Indiana",
@@ -94,7 +94,7 @@
                 {
                     ParkId = 5,
                     Name = "Indiana Dunes",
-                    parkType = Park.ParkType.national,
+                    parkType = Park.ParkType.National,
                     Description = "Indiana Dunes National Park is a United States national park located in northwestern Indiana managed by the National Park Service." +
                     " It was authorized by Congress in 1966 as the Indiana Dunes National Lakeshore and was redesignated as the nation's 61st national park on February 15, 2019.",
                     Location = "Indiana",
@@ -106,7 +106,7 @@
                 {
                     ParkId = 6,
                     Name = "Isle Royale",
-                    parkType = Park.ParkType.national,
+                    parkType = Park.ParkType.National,
                     Description = "Isle Royale National Park is a remote island cluster in Lake Superior, near Michigan’s border with Canada." +
                     " It’s a car-free wilderness of forests, lakes and waterways, where moose and wolves roam. The Greenstone Ridge Trail links the Windigo Harbor in the west and Rock Harbor in the east." +
                     " The 19th-century Rock Harbor Lighthouse has a small museum. Dive sites in the lake include several shipwrecks.",

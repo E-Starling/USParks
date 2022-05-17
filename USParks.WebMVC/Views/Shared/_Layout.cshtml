@@ -35,20 +35,20 @@
             
         }
 
-        
 
-        .buffer{
+
+        .buffer {
             background-color: #313e59;
-           
             color: snow;
-            font-family:'Comic Sans MS';
-            
-            padding-bottom:15px;
-            padding-top:15px;
+            font-family: 'Comic Sans MS';
+            padding-bottom: 15px;
+            padding-top: 15px;
             padding-right: 40px;
             padding-left: 35px;
-            text-align:center;
-            width:180px;
+            text-align: center;
+            width: 180px;
+            border: 1px solid #cabe9b;
+            background-color: #313e59;
         }
 
         .filler{
@@ -106,19 +106,18 @@
                 background-color: #3f9068;
             }
 
-        .hovering:hover {
-            background-color: blueviolet;
-        }
+        
 
         .navpad {
             padding-left: 10px;
             color: snow;
+            
         }
 
         .navitems {
             color: snow;
             font-size: 14px;
-            font-family: 'Comic Sans MS'
+            font-family: 'Comic Sans MS';
         }
         
         /*
@@ -175,11 +174,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                
                 <div class="buffer">@ViewBag.Title</div>
-
             </div>
-
             <div class="navbar-collapse collapse">
                 <div class="profile">
                     @Html.Partial("_LoginPartial")
@@ -195,13 +191,13 @@
                         <img src="~/Content/Images/USParks.png" />
                     </li>
                     <li>
-                        <h4 class="navpad">Navigation</h4>
-                    </li>
-                    <li>
                         @Html.ActionLink("Main Page", "Index", "Home", new { area = "" }, new { @class = "navitems" })
                     </li>
                     <li>
                         @Html.ActionLink("Park List", "Index", "Park", new { area = "" }, new { @class = "navitems" })
+                    </li>
+                    <li>
+                        @Html.ActionLink("Attraction List", "Index", "Attraction", new { area = "" }, new { @class = "navitems" })
                     </li>
                     <li>
                         @Html.ActionLink("Nature List", "Index", "Nature", new { area = "" }, new { @class = "navitems" })
@@ -212,19 +208,16 @@
                     <li>
                         @Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "navitems" })
                     </li>
-                    <li>
-                        @Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "navitems" })
-                    </li>
+
                 </ul>
             </div>
         </div>
     </div>
-
     <div class="container body-content" style="background-color: #172136">
         @RenderBody()
         <hr />
         <footer class="navitems">
-            <p>&copy; @DateTime.Now.Year - Ethan Starling US Parks</p>
+            <p>2022 - Ethan Starling US Parks</p>
         </footer>
     </div>
     @Scripts.Render("~/bundles/jquery")

@@ -8,7 +8,7 @@ namespace USParks.Data
 {
     public class Park
     {
-        public enum ParkType { national, state }
+        public enum ParkType { National, State }
         [Key]
         public int ParkId { get; set; }
         [Required]

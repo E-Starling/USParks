@@ -15,5 +15,7 @@ namespace USParks.Models.Attraction
         [Display(Name = "Park Id")]
         [ForeignKey("Park Id")]
         public int ParkId { get; set; }
+        [Display(Name = "Upload an image .png |.jpg | 3 MB Limit")]
+        public byte[] Image { get; set; }
     }
 }

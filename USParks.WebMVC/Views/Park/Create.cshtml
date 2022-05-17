@@ -26,8 +26,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.parkType, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.parkType, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.parkType, "", new { @class = "text-danger" })
+            @Html.DropDownListFor(model => model.parkType, new SelectList(Enum.GetValues(typeof(USParks.Models.Park.ParkCreate.ParkType))))
         </div>
     </div>
 

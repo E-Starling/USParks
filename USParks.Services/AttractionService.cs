@@ -8,15 +8,12 @@ namespace USParks.Services
 {
     public class AttractionService
     {
-
         private readonly Guid _userId;
-
         public AttractionService() { }
         public AttractionService(Guid userId)
         {
             _userId = userId;
         }
-
         public bool CreateAttraction(AttractionCreate model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -113,5 +110,3 @@ namespace USParks.Services
         }
     }
 }
-
-

@@ -28,7 +28,6 @@ namespace USParks.Services
                 Diet = (Nature.DietType?)model.Diet
             };
 
-
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Nature.Add(entity);
@@ -73,7 +72,6 @@ namespace USParks.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-
                 var userNature = ctx.Nature.Where(e => e.OwnerId == _userId).ToArray();
                 foreach (var n in userNature)
                 {
@@ -85,7 +83,6 @@ namespace USParks.Services
                         entity.Kingdom = (Nature.KingdomType)model.Kingdom;
                         entity.Class = model.Class;
                         entity.Diet = (Nature.DietType)model.Diet;
-
                         return ctx.SaveChanges() == 1;
                     }
                 }
@@ -112,6 +109,3 @@ namespace USParks.Services
         }
     }
 }
-
-
-

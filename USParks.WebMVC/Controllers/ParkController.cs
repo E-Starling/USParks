@@ -71,7 +71,8 @@ namespace USParks.WebMVC.Controllers
                     Description = detail.Description,
                     Location = detail.Location,
                     Size = detail.Size,
-                    YearlyVisitors = detail.YearlyVisitors
+                    YearlyVisitors = detail.YearlyVisitors,
+                    Image = detail.Image
                 };
             return View(model);
         }
@@ -89,8 +90,8 @@ namespace USParks.WebMVC.Controllers
             }
 
             var service = CreateParkService();
-
-            if (service.UpdatePark(model))
+            HttpPostedFileBase file = Request.Files["ImageData"];
+            if (service.UpdatePark(file,model))
             {
                 TempData["ParkSaveResult"] = "Park was updated.";
                 return RedirectToAction("Index");
