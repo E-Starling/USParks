@@ -31,26 +31,32 @@
 
         .navbar-fixed-top {
             border: 0;
-            background-color: #3e7a23;
+            background-color: #172136;
+            
         }
 
-        .profile {
-            padding-right: 20px;
-        }
+        
 
         .buffer{
             background-color: #313e59;
            
             color: snow;
             font-family:'Comic Sans MS';
-            margin-left:165px;
+            
             padding-bottom:15px;
             padding-top:15px;
-            padding-right: 10px;
-            padding-left: 10px;
-    
+            padding-right: 40px;
+            padding-left: 35px;
+            text-align:center;
+            width:180px;
         }
 
+        .filler{
+            background-color: #3e7a23;
+        }
+        .upper{
+            border-radius:20%
+        }
         /*
         * Sidebar
         */
@@ -114,32 +120,26 @@
             font-size: 14px;
             font-family: 'Comic Sans MS'
         }
-        .navitems:hover{
-            color:#00efbc
-        }
+        
         /*
         * Main content
         */
         .main {
-            padding: 20px;
+            padding: 5px;
         }
         .container {
             padding: 20px;
             padding-right: 40px;
-            padding-left: 220px;
+            padding-left: 200px;
         }
         .container-fluid{
             padding-right:0px;
+            padding-left: 0px;
         }
 
-        .main {
-            padding-right: 40px;
-            padding-left: 220px;
-        }
+        
 
-            .main .page-header {
-                margin-top: 0;
-            }
+            
 
 
         /*
@@ -175,6 +175,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                
                 <div class="buffer">@ViewBag.Title</div>
 
             </div>
@@ -218,6 +219,7 @@
             </div>
         </div>
     </div>
+
     <div class="container body-content" style="background-color: #172136">
         @RenderBody()
         <hr />

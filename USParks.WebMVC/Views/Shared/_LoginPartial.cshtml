@@ -8,7 +8,13 @@
         }
     .navbar-right {
         background-color: #313e59;
-        padding-right: 10px;
+       
+        margin-right: 5px;
+        border-radius: 10%;
+        
+    }
+    .log{
+        border-radius: 10%;
     }
 
     
@@ -24,7 +30,7 @@
         <li>
             @Html.ActionLink("Greetings " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" , @class= "upper" })
         </li> 
-        <li style="background-color: #313e59"><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        <li class="log" style="background-color: #313e59"><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
     </ul>
     }
 }
