@@ -3,155 +3,283 @@
 @{
     ViewBag.Title = "Details";
 }
+<style>
+    .bigstyle {
+        color: snow;
+        font-family: 'Comic Sans MS';
+        font-weight: 700;
+    }
 
-<h2>Details</h2>
+    .style {
+        color: snow;
+        font-family: 'Comic Sans MS';
+        padding-left: 30px;
+    }
+
+    .rtable {
+        float: right;
+        table-layout: fixed;
+        border: 1px solid #cabe9b;
+        width: 300px;
+        margin: .5em 0 1em 1em;
+        border-collapse: collapse;
+        word-break: break-word;
+        background-color: #313e59;
+    }
+
+        .rtable td {
+            padding: 0em 0.5em;
+            line-height: 1.6em;
+            font-size: 14px;
+        }
+
+    .tbody {
+        font-size: 0.85em;
+        color: snow;
+        font-family: 'Comic Sans MS';
+    }
+
+    .tablehead {
+        font-size: 1.15em;
+        line-height: 1.4em;
+        padding: .5em 0;
+        background-color: #222e45;
+        color: snow;
+        text-align: center;
+    }
+
+    .tablepad {
+        height: 0.5em;
+        padding: 0;
+        border: 0;
+    }
+
+    .tableimage {
+        max-width: 300px;
+        text-align: center;
+        overflow: hidden;
+        padding: 0;
+    }
+
+    .tablenames {
+        text-align: right;
+        vertical-align: top;
+        border-right: 2px solid #b8a282;
+        padding: 0.5em 0.5em;
+        font-size: 14px;
+    }
+
+    .detailtable {
+        background-color: #313e59;
+        float: left;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .popular {
+        display: flex;
+        flex-flow: column wrap;
+    }
+
+    .popular-halves {
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    .popular-top {
+        width: 100%;
+        padding: 1.3rem 1.5rem 0.6rem;
+    }
+
+    .popular-pages {
+        display: block;
+    }
+
+        .popular-pages h2 {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: snow;
+            font-family: 'Comic Sans MS';
+        }
+
+        .popular-pages ul {
+            display: flex;
+            margin: 1em 0 0.7em;
+            width: 100%;
+            flex-flow: row wrap;
+        }
+
+    .popular-pages-items {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        transition: 0.2s;
+        margin-left: 30px;
+        margin-right: 30px;
+        color: snow;
+        font-family: 'Comic Sans MS';
+    }
+
+
+    .popularitems {
+        color: snow;
+        font-size: 16px;
+        font-family: 'Comic Sans MS';
+        background-color: #617ebc;
+        padding: 12px 16px;
+        margin-right: 2em;
+        margin-bottom: 2em;
+    }
+
+        .popularitems:hover {
+            background-color: #6c8cd1;
+            text-decoration: none;
+            color: cyan;
+        }
+
+    .natureh {
+        color: snow;
+        padding-right: 20px;
+        margin-right: 20px;
+        font-weight: bold;
+    }
+    .natureh h4{
+        font-weight: bold;
+        font-family: 'Comic Sans MS';
+    }
+    .natureitems {
+        display: flex;
+        box-sizing: border-box;
+        flex-direction: row;
+        flex-wrap: wrap;
+        
+        
+    }
+    .natureitems li{
+        list-style:none;
+        color: snow;
+        font-family: 'Comic Sans MS';
+    }
+    .parknatbuttons {
+        color: snow;
+        font-size: 15px;
+        font-family: 'Comic Sans MS';
+        background-color: #617ebc;
+        padding: 5px 5px;
+        border-radius: 10%;
+    }
+
+        .parknatbuttons:hover {
+            background-color: #6c8cd1;
+            text-decoration: none;
+            color: cyan;
+        }
+</style>
 
 <div>
-    <h4>ParkDetail</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
+    <table class="rtable">
+        <tbody class="tbody">
+            <tr>
+                <th colspan="30" class="tablehead">@Html.DisplayFor(model => model.Name) @Html.DisplayFor(model => model.parkType) Park</th>
+            </tr>
+            <tr>
+                <td colospan="30" class="tablepad"></td>
+            </tr>
+            <tr>
+                <td colspan="30" class="tableimage"><img src="/Park/RetrieveImage/@Model.ParkId" alt="" height=150 width=280 /></td>
+            </tr>
+            <tr>
+                <td colspan="30" class="tablepad"></td>
+            </tr>
+            <tr>
+                <th colspan="10" class="tablenames">@Html.DisplayNameFor(model => model.ParkId)</th>
+                <td colspan="20">@Html.DisplayFor(model => model.ParkId)</td>
+            </tr>
+            <tr>
+                <th colspan="10" class="tablenames">@Html.DisplayNameFor(model => model.Name)</th>
+                <td colspan="20">@Html.DisplayFor(model => model.Name)</td>
+            </tr>
+            <tr>
+                <th colspan="10" class="tablenames">@Html.DisplayNameFor(model => model.parkType)</th>
+                <td colspan="20">@Html.DisplayFor(model => model.parkType)</td>
+            </tr>
+            <tr>
+                <th colspan="10" class="tablenames">@Html.DisplayNameFor(model => model.Location)</th>
+                <td colspan="20">@Html.DisplayFor(model => model.Location)</td>
+            </tr>
+            <tr>
+                <th colspan="10" class="tablenames">@Html.DisplayNameFor(model => model.Size)</th>
+                <td colspan="20">@Html.DisplayFor(model => model.Size)</td>
+            </tr>
+            <tr>
+                <th colspan="10" class="tablenames">@Html.DisplayNameFor(model => model.YearlyVisitors)</th>
+                <td colspan="20">@Html.DisplayFor(model => model.YearlyVisitors)</td>
+            </tr>
+        </tbody>
+    </table>
 
-        </dt>
-        <dd>
+    <div>
+        <h2 class="bigstyle">@Html.DisplayFor(model => model.Name) @Html.DisplayFor(model => model.parkType) Park</h2>
+        <h4 class="style">@Html.DisplayFor(model => model.Description)</h4>
+    </div>
 
-            <img src="/Park/RetrieveImage/@Model.ParkId" alt="" height=150 width=280 />
-            
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ParkId)
-        </dt>
+    <div style="border-bottom: 1px solid #b8a282" class="natureh">
+        <h4>Nature found within the park: </h4>
+        @Html.ActionLink("Add Nature Park", "Create", "ParkNature")
+        <p class="empty"></p>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.ParkId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.parkType)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.parkType)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Location)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Location)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Size)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Size)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.YearlyVisitors)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.YearlyVisitors)
-        </dd>
-    </dl>
-    <table class="table">
-        <caption>Nature found within the park</caption>
-        
-            @Html.ActionLink("Add Nature to Park", "Create", "ParkNature")
-        
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nature.First().NatureId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nature.First().NatureName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nature.First().Image)
-        </th>
-        <th></th>
-    </tr>
+    <div class="natureitems">
         @foreach (var nature in Model.Nature)
         {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelnature => nature.NatureId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelnature => nature.NatureName)
-        </td>
-        <td>
-            <img src="/Nature/RetrieveImage/@nature.NatureId" alt="" height=80 width=100 />
-        </td>
-        <td>
-            @Html.ActionLink("Details", "Details", "Nature", new { id = nature.NatureId }, null) |
-            @Html.ActionLink("Delete", "Delete", "ParkNature", new { id = nature.ParkNatureId }, null) |
-        </td>
-    </tr>
+        <ul>
+            <li>
+                <img src="/Nature/RetrieveImage/@nature.NatureId" alt="" height=80 width=100 />
+            </li>
+            <li style="text-align:center">
+                @Html.DisplayFor(modelnature => nature.NatureName)
+            </li>
+            <p class="empty"></p>
+            <li>
+                @Html.DisplayNameFor(model => model.Nature.First().NatureId): @Html.DisplayFor(modelnature => nature.NatureId)
+            </li>
+            <li>
+                @Html.ActionLink("Details", "Details", "Nature", new { id = nature.NatureId }, null) |
+                @Html.ActionLink("Delete", "Delete", "ParkNature", new { id = nature.ParkNatureId }, null)
+            </li>
+            <p class="empty"></p>
+        </ul>
         }
+    </div>
 
-    </table>
-    <table class="table">
-        <caption>Attractions found within the park</caption>
-
-            
-                @Html.ActionLink("Add Attraction to Park", "Create", "Attraction")
-            
-
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Attractions.First().AttractionId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Attractions.First().Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Attractions.First().Image)
-            </th>
-            <th></th>
-        </tr>
+    <div style="border-bottom: 1px solid #b8a282" class="natureh">
+        <h4>Attractions found within the park: </h4>
+        @Html.ActionLink("Add Attraction to Park", "Create", "Attraction")
+        <p class="empty"></p>
+    </div>
+    <div class="natureitems">
         @foreach (var attraction in Model.Attractions)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelattraction => attraction.AttractionId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelattraction => attraction.Name)
-                </td>
-                <td>
-                    <img src="/Attraction/RetrieveImage/@attraction.AttractionId" alt="" height=80 width=100 />
-                </td>
-                <td>
-                    @Html.ActionLink("Details", "Details", "Attraction", new { id = attraction.AttractionId }, null) |
-                    @Html.ActionLink("Edit", "Edit", "Attraction", new { id = attraction.AttractionId }, null) |
-                    @Html.ActionLink("Delete", "Delete", "Attraction", new { id = attraction.AttractionId }, null) |
-
-                </td>
-            </tr>
+        <ul>
+            <li>
+                <img src="/Attraction/RetrieveImage/@attraction.AttractionId" alt="" height=80 width=100 />
+            </li>
+            <li>
+                @Html.DisplayFor(modelattraction => attraction.Name)
+            </li>
+            <p class="empty"></p>
+            <li>
+                @Html.DisplayNameFor(model => model.Attractions.First().AttractionId): @Html.DisplayFor(modelnature => attraction.AttractionId)
+            </li>
+            <li>
+                @Html.ActionLink("Details", "Details", "Attraction", new { id = attraction.AttractionId }, null) |
+                @Html.ActionLink("Edit", "Edit", "Attraction", new { id = attraction.AttractionId }, null) |
+                @Html.ActionLink("Delete", "Delete", "Attraction", new { id = attraction.AttractionId }, null)
+            </li>
+            <p class="empty"></p>
+        </ul>
         }
-    </table>
-</div>
+    </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ParkId }) |
     @Html.ActionLink("Back to List", "Index")
