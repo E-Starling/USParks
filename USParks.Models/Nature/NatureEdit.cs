@@ -19,5 +19,7 @@ namespace USParks.Models.Nature
         public string Class { get; set; }
         [Display(Name = "Diet (herbivore, carnivore, omnivore, other)")]
         public DietType? Diet { get; set; }
+        [Display(Name = "Upload an image .png |.jpg | 3 MB Limit")]
+        public byte[] Image { get; set; }
     }
 }

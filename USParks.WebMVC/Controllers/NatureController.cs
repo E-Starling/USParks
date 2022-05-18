@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using USParks.Models.Nature;
@@ -12,11 +13,6 @@ namespace USParks.WebMVC.Controllers
         // GET: Nature
         public ActionResult Index()
         {
-            // Code for only seeing what user created??
-            //var userId = Guid.Parse(User.Identity.GetUserId());
-            //var service = new NatureService(userId);
-            //var model = service.GetNature();
-            //return View(model);
             var service = new NatureService();
             var model = service.GetNature();
             return View(model);
@@ -32,31 +28,18 @@ namespace USParks.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(NatureCreate model)
         {
-            //if (!ModelState.IsValid) return View(model);
-
-            //var service = CreateNatureService();
-
-            //if (service.CreateNature(model))
-            //{
-            //    TempData["SaveResult"] = "Your nature was created.";
-            //    return RedirectToAction("Index");
-
-            //};
-            //ModelState.AddModelError("", "Note could not be created.");
-            //return View(model);
-
-            if (!ModelState.IsValid) return View(model);
+            if (!ModelState.IsValid) 
+                return View(model);
 
             var service = CreateNatureService();
-
-            if (service.CreateNature(model))
+            HttpPostedFileBase file = Request.Files["ImageData"];
+            int i = service.CreateNature(file, model);
+            if (i == 1)
             {
                 TempData["NatureSaveResult"] = "Nature was added.";
                 return RedirectToAction("Index");
-            };
-
+            }
             ModelState.AddModelError("", "Nature could not be added.");
-
             return View(model);
         }
 
@@ -81,7 +64,8 @@ namespace USParks.WebMVC.Controllers
                     Description = detail.Description,
                     Kingdom = (NatureEdit.KingdomType)detail.Kingdom,
                     Class = detail.Class,
-                    Diet = (NatureEdit.DietType)detail.Diet
+                    Diet = (NatureEdit.DietType)detail.Diet,
+                    Image = detail.Image
                 };
             return View(model);
         }
@@ -90,7 +74,8 @@ namespace USParks.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, NatureEdit model)
         {
-            if (!ModelState.IsValid) return View(model);
+            if (!ModelState.IsValid) 
+                return View(model);
 
             if (model.NatureId != id)
             {
@@ -99,16 +84,14 @@ namespace USParks.WebMVC.Controllers
             }
 
             var service = CreateNatureService();
-
-            if (service.UpdateNature(model))
+            HttpPostedFileBase file = Request.Files["ImageData"];
+            if (service.UpdateNature(file, model))
             {
                 TempData["NatureSaveResult"] = "Nature was updated.";
                 return RedirectToAction("Index");
             }
             TempData["NatureError"] = "Can't update another user's Nature item.";
             return RedirectToAction("Index");
-            //ModelState.AddModelError("", "Cant update other user's nature items.");
-            //return View(model);
         }
 
         [ActionName("Delete")]
@@ -141,6 +124,21 @@ namespace USParks.WebMVC.Controllers
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new NatureService(userId);
             return service;
+        }
+
+        public ActionResult RetrieveImage(int id)
+        {
+            var service = CreateNatureService();
+
+            byte[] cover = service.GetImageFromDataBase(id);
+            if (cover != null)
+            {
+                return File(cover, "image/jpg");
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

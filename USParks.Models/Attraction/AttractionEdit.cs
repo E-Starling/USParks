@@ -12,5 +12,7 @@ namespace USParks.Models.Attraction
         public string Description { get; set; }
         [Display(Name = "Park Id")]
         public int ParkId { get; set; }
+        [Display(Name = "Upload an image .png |.jpg | 3 MB Limit")]
+        public byte[] Image { get; set; }
     }
 }

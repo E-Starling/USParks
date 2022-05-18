@@ -91,7 +91,7 @@ namespace USParks.WebMVC.Controllers
 
             var service = CreateParkService();
             HttpPostedFileBase file = Request.Files["ImageData"];
-            if (service.UpdatePark(file,model))
+            if (service.UpdatePark(file, model))
             {
                 TempData["ParkSaveResult"] = "Park was updated.";
                 return RedirectToAction("Index");
@@ -131,9 +131,6 @@ namespace USParks.WebMVC.Controllers
             var service = new ParkService(userId);
             return service;
         }
-
-      
-      
 
         public ActionResult RetrieveImage(int id)
         {

@@ -11,6 +11,7 @@ namespace USParks.Models.ParkNature
 
         [Display(Name = "Nature Name")]
         public string NatureName { get; set; }
+        public byte[] Image { get; set; }
         [Display(Name = "Park Id")]
         public int ParkId { get; set; }
         [Display(Name = "Park Name")]

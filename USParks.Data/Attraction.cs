@@ -15,12 +15,12 @@ namespace USParks.Data
         public string Name { get; set; }
         [Required]
         public string Description { get; set; }
-        public byte[] Image { get; set; }
         [Required]
         [Display(Name = "Park")]
         [ForeignKey("Park")]
         public int ParkId { get; set; }
         public virtual Park Park { get; set; }
+        public byte[] Image { get; set; }
 
        
     }

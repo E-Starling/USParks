@@ -21,5 +21,6 @@ namespace USParks.Data
         public string Class { get; set; }
         [Required]
         public DietType? Diet { get; set; }
+        public byte[] Image { get; set; }
     }
 }

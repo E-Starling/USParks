@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Web;
 using USParks.Data;
 using USParks.Models.Nature;
 
@@ -16,8 +18,9 @@ namespace USParks.Services
             _userId = userId;
         }
 
-        public bool CreateNature(NatureCreate model)
+        public int CreateNature(HttpPostedFileBase file, NatureCreate model)
         {
+            model.Image = ConvertToBytes(file);
             var entity = new Nature()
             {
                 OwnerId = _userId,
@@ -25,13 +28,18 @@ namespace USParks.Services
                 Description = model.Description,
                 Kingdom = (Nature.KingdomType)model.Kingdom,
                 Class = model.Class,
-                Diet = (Nature.DietType?)model.Diet
+                Diet = (Nature.DietType?)model.Diet,
+                Image = model.Image
             };
 
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Nature.Add(entity);
-                return ctx.SaveChanges() == 1;
+                int i = ctx.SaveChanges();
+                if (i == 1)
+                    return 1;
+                else
+                    return 0;
             }
         }
 
@@ -44,7 +52,8 @@ namespace USParks.Services
                     NatureId = e.NatureId,
                     Name = e.Name,
                     Kingdom = (NatureListItem.KingdomType)e.Kingdom,
-                    Class = e.Class
+                    Class = e.Class,
+                    Image = e.Image
                 });
                 return query.ToArray();
             }
@@ -63,13 +72,15 @@ namespace USParks.Services
                         Description = entity.Description,
                         Kingdom = (NatureDetail.KingdomType)entity.Kingdom,
                         Class = entity.Class,
-                        Diet = (NatureDetail.DietType)entity.Diet
+                        Diet = (NatureDetail.DietType)entity.Diet,
+                        Image = entity.Image
                     };
             }
         }
 
-        public bool UpdateNature(NatureEdit model)
+        public bool UpdateNature(HttpPostedFileBase file, NatureEdit model)
         {
+            model.Image = ConvertToBytes(file);
             using (var ctx = new ApplicationDbContext())
             {
                 var userNature = ctx.Nature.Where(e => e.OwnerId == _userId).ToArray();
@@ -83,6 +94,7 @@ namespace USParks.Services
                         entity.Kingdom = (Nature.KingdomType)model.Kingdom;
                         entity.Class = model.Class;
                         entity.Diet = (Nature.DietType)model.Diet;
+                        entity.Image = model.Image;
                         return ctx.SaveChanges() == 1;
                     }
                 }
@@ -105,6 +117,24 @@ namespace USParks.Services
                     }
                 }
                 return false;
+            }
+        }
+
+        public byte[] ConvertToBytes(HttpPostedFileBase image)
+        {
+            byte[] imageBytes = null;
+            BinaryReader reader = new BinaryReader(image.InputStream);
+            imageBytes = reader.ReadBytes((int)image.ContentLength);
+            return imageBytes;
+        }
+
+        public byte[] GetImageFromDataBase(int Id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var q = from temp in ctx.Nature where temp.NatureId == Id select temp.Image;
+                byte[] cover = q.First();
+                return cover;
             }
         }
     }

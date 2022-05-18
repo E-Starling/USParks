@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Web;
 using USParks.Data;
 using USParks.Models.Attraction;
 
@@ -14,27 +16,26 @@ namespace USParks.Services
         {
             _userId = userId;
         }
-        public bool CreateAttraction(AttractionCreate model)
+        public int CreateAttraction(HttpPostedFileBase file, AttractionCreate model)
         {
+            model.Image = ConvertToBytes(file);
+            var entity = new Attraction()
+            {
+                OwnerId = _userId,
+                Name = model.Name,
+                Description = model.Description,
+                ParkId = model.ParkId,
+                Image = model.Image
+            };
+
             using (var ctx = new ApplicationDbContext())
             {
-                var parks = ctx.Parks.ToArray();
-                foreach (var p in parks)
-                {
-                    if (p.ParkId == model.ParkId)
-                    {
-                        var entity = new Attraction()
-                        {
-                            OwnerId = _userId,
-                            Name = model.Name,
-                            Description = model.Description,
-                            ParkId = model.ParkId
-                        };
-                        ctx.Attractions.Add(entity);
-                        return ctx.SaveChanges() == 1;
-                    }
-                }
-                return false;
+                ctx.Attractions.Add(entity);
+                int i = ctx.SaveChanges();
+                if (i == 1)
+                    return 1;
+                else
+                    return 0;
             }
         }
 
@@ -47,7 +48,8 @@ namespace USParks.Services
                     AttractionId = e.AttractionId,
                     Name = e.Name,
                     ParkId = e.ParkId,
-                    ParkName = e.Park.Name
+                    ParkName = e.Park.Name,
+                    Image = e.Image
                 });
                 return query.ToArray();
             }
@@ -65,13 +67,15 @@ namespace USParks.Services
                         Name = entity.Name,
                         Description = entity.Description,
                         ParkId = entity.ParkId,
-                        ParkName = entity.Park.Name
+                        ParkName = entity.Park.Name,
+                        Image = entity.Image
                     };
             }
         }
 
-        public bool UpdateAttraction(AttractionEdit model)
+        public bool UpdateAttraction(HttpPostedFileBase file, AttractionEdit model)
         {
+            model.Image = ConvertToBytes(file);
             using (var ctx = new ApplicationDbContext())
             {
 
@@ -84,6 +88,7 @@ namespace USParks.Services
                         entity.Name = model.Name;
                         entity.Description = model.Description;
                         entity.ParkId = model.ParkId;
+                        entity.Image = model.Image;
                         return ctx.SaveChanges() == 1;
                     }
                 }
@@ -106,6 +111,24 @@ namespace USParks.Services
                     }
                 }
                 return false;
+            }
+        }
+
+        public byte[] ConvertToBytes(HttpPostedFileBase image)
+        {
+            byte[] imageBytes = null;
+            BinaryReader reader = new BinaryReader(image.InputStream);
+            imageBytes = reader.ReadBytes((int)image.ContentLength);
+            return imageBytes;
+        }
+
+        public byte[] GetImageFromDataBase(int Id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var q = from temp in ctx.Attractions where temp.AttractionId == Id select temp.Image;
+                byte[] cover = q.First();
+                return cover;
             }
         }
     }

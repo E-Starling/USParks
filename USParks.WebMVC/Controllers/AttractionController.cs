@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Web;
+using System.Web.Mvc;
 using USParks.Models.Attraction;
 using USParks.Services;
 
@@ -20,23 +21,22 @@ namespace USParks.WebMVC.Controllers
         {
             return View();
         }
-        // POST: Create
+        // POST: Create Attraction
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(AttractionCreate model)
         {
-            if (!ModelState.IsValid) return View(model);
-
+            if (!ModelState.IsValid)
+                return View(model);
             var service = CreateAttractionService();
-
-            if (service.CreateAttraction(model))
+            HttpPostedFileBase file = Request.Files["ImageData"];
+            int i = service.CreateAttraction(file, model);
+            if (i == 1)
             {
                 TempData["AttractionSaveResult"] = "Attraction was added.";
                 return RedirectToAction("Index", "Park");
-            };
-
+            }
             ModelState.AddModelError("", "Invalid Park Id.");
-
             return View(model);
         }
 
@@ -59,7 +59,8 @@ namespace USParks.WebMVC.Controllers
                     AttractionId = detail.AttractionId,
                     Name = detail.Name,
                     Description = detail.Description,
-                    ParkId = detail.ParkId
+                    ParkId = detail.ParkId,
+                    Image = detail.Image
                 };
             return View(model);
         }
@@ -68,35 +69,9 @@ namespace USParks.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, AttractionEdit model)
         {
-            //if (!ModelState.IsValid) return View(model);
 
-            //if (model.AttractionId != id)
-            //{
-            //    ModelState.AddModelError("", "Id Mismatch");
-            //    return View(model);
-            //}
-
-            //var service = CreateAttractionService();
-
-
-            //if (service.UpdateAttraction(model))
-            //{
-            //    TempData["SaveResult"] = "Attraction was updated.";
-            //    return RedirectToAction("Index", "Park");
-            //}
-            //if (model.NatureId == id)
-            //{
-            //    ModelState.AddModelError("", "Id wasn't updated");
-            //    return View(model);
-            //}
-            //if (model.NatureId != id)
-            //{
-            //    ModelState.AddModelError("", "Please enter another valid nature id.");
-            //    return View(model);
-            //}
-
-            //return View(model);
-            if (!ModelState.IsValid) return View(model);
+            if (!ModelState.IsValid) 
+                return View(model);
 
             if (model.AttractionId != id)
             {
@@ -105,13 +80,13 @@ namespace USParks.WebMVC.Controllers
             }
 
             var service = CreateAttractionService();
-
-            if (service.UpdateAttraction(model))
+            HttpPostedFileBase file = Request.Files["ImageData"];
+            if (service.UpdateAttraction(file, model))
             {
                 TempData["AttractionSaveResult"] = "Attraction was updated.";
                 return RedirectToAction("Index", "Park");
             }
-            TempData["AttractionError"] = "Can't update another user's Attraction.";
+            TempData["AttractionError"] = "Editing Error";
             return RedirectToAction("Index", "Park");
 
         }
@@ -133,7 +108,7 @@ namespace USParks.WebMVC.Controllers
             var service = CreateAttractionService();
             if (!service.DeleteAttraction(id))
             {
-                TempData["AttractionError"] = "Can't delete another user's Attraction.";
+                TempData["AttractionError"] = "Deletion Error.";
                 return RedirectToAction("Index", "Park");
             }
             service.DeleteAttraction(id);
@@ -145,6 +120,21 @@ namespace USParks.WebMVC.Controllers
         {
             var service = new AttractionService();
             return service;
+        }
+
+        public ActionResult RetrieveImage(int id)
+        {
+            var service = CreateAttractionService();
+
+            byte[] cover = service.GetImageFromDataBase(id);
+            if (cover != null)
+            {
+                return File(cover, "image/jpg");
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

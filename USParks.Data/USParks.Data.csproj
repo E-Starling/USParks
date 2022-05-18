@@ -140,6 +140,7 @@
     <Content Include="Images\indianadunes.jpg" />
     <Content Include="Images\isleroyal.jpg" />
     <Content Include="Images\turkeyrun.jpg" />
+    <Content Include="Images\USParks.png" />
     <Content Include="Images\yellowstone.jfif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

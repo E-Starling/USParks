@@ -11,5 +11,6 @@ namespace USParks.Models.Nature
         public string Name { get; set; }
         public KingdomType Kingdom { get; set; }
         public string Class { get; set; }
+        public byte[] Image { get; set; }
     }
 }

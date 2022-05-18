@@ -49,24 +49,27 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NatureId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Kingdom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Class)
-            </td>
-            <td>
-                @Html.ActionLink("Details", "Details", new { id = item.NatureId }) |
-                @Html.ActionLink("Edit", "Edit", new { id = item.NatureId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.NatureId })
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.NatureId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Kingdom)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Class)
+    </td>
+    <td>
+        <img src="/Nature/RetrieveImage/@item.NatureId" alt="" height=100 width=200 />
+    </td>
+    <td>
+        @Html.ActionLink("Details", "Details", new { id = item.NatureId }) |
+        @Html.ActionLink("Edit", "Edit", new { id = item.NatureId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.NatureId })
+    </td>
+</tr>
     }
 </table>
