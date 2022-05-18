@@ -137,10 +137,12 @@
   <ItemGroup>
     <Content Include="Images\BaldEagle.jpg" />
     <Content Include="Images\BeachOverlook.jpeg" />
+    <Content Include="Images\Bison.jpg" />
     <Content Include="Images\BlackBear.jpg" />
     <Content Include="Images\DouglasFir.jpg" />
     <Content Include="Images\ElCapitan.jpg" />
     <Content Include="Images\Glacier.jpg" />
+    <Content Include="Images\GlacierLily.jfif" />
     <Content Include="Images\grandcaynon.jpg" />
     <Content Include="Images\grandteton.jpg" />
     <Content Include="Images\HoleInTheWall.jpg" />
@@ -151,13 +153,16 @@
     <Content Include="Images\MariposaGroveofGiantSequoias.jpg" />
     <Content Include="Images\MatherPoint.jpg" />
     <Content Include="Images\MenagerieIslandLight.jpg" />
+    <Content Include="Images\Moose.jpg" />
     <Content Include="Images\OldFaithful.jpg" />
+    <Content Include="Images\PennyBun.jpg" />
     <Content Include="Images\ScovillePoint.jfif" />
     <Content Include="Images\Squirrel.jpg" />
     <Content Include="Images\SuillusSibiricus.jpg" />
     <Content Include="Images\turkeyrun.jpg" />
     <Content Include="Images\TurkeyRunCenter.jpg" />
     <Content Include="Images\Waianapanapa.jpeg" />
+    <Content Include="Images\Wolf.jpg" />
     <Content Include="Images\YavapaiObservationStation.jpg" />
     <Content Include="Images\yellowstone.jfif" />
     <Content Include="Images\Yosemite.jpg" />

@@ -348,7 +348,60 @@
                 new Nature()
                 {
                     NatureId = 7,
-                    Name = ""
+                    Name = "Glacier Lily",
+                    Description = "Erythronium grandiflorum is a North American species of plants in the lily family." +
+                    " It is known by several common names, including yellow avalanche lily, glacier lily, and dogtooth fawn lily.",
+                    Kingdom = Nature.KingdomType.Flora,
+                    Class = "Liliopsida",
+                    Diet = Nature.DietType.Other,
+                    Image = ReadFile("../../Images/GlacierLily.jfif")
+                },
+                new Nature()
+                {
+                    NatureId = 8,
+                    Name = "Moose",
+                    Description = "The moose or elk is a member of the New World deer subfamily and is the largest and heaviest extant" +
+                    " species in the deer family. Most adult male moose have distinctive broad, palmate antlers; most other members" +
+                    " of the deer family have antlers with a dendritic configuration.",
+                    Kingdom = Nature.KingdomType.Fauna,
+                    Class = "Mammalia",
+                    Diet = Nature.DietType.Herbivore,
+                    Image = ReadFile("../../Images/Moose.jpg")
+                },
+                new Nature()
+                {
+                    NatureId = 9,
+                    Name = "Penny Bun",
+                    Description = "Boletus edulis is a basidiomycete fungus, and the type species of the genus Boletus. Widely distributed" +
+                    " in the Northern Hemisphere across Europe, Asia, and North America, it does not occur naturally in the Southern Hemisphere," +
+                    " although it has been introduced to southern Africa, Australia, New Zealand, and Brazil.",
+                    Kingdom = Nature.KingdomType.Funga,
+                    Class = "Agaricomycetes",
+                    Diet = Nature.DietType.Other,
+                    Image = ReadFile("../../Images/PennyBun.jpg")
+                },
+                new Nature()
+                {
+                    NatureId = 10,
+                    Name = "Wolf",
+                    Description = "The wolf, also known as the gray wolf or grey wolf, is a large canine native to Eurasia and North America." +
+                    " More than thirty subspecies of Canis lupus have been recognized, and gray wolves, as popularly understood, comprise wild" +
+                    " subspecies. The wolf is the largest extant member of the family Canidae.",
+                    Kingdom = Nature.KingdomType.Fauna,
+                    Class = "Mammalia",
+                    Diet = Nature.DietType.Carnivore,
+                    Image = ReadFile("../../Images/Wolf.jpg")
+                },
+                new Nature()
+                {
+                    NatureId = 11,
+                    Name = "American Bison",
+                    Description = "The American bison, is a species of bison native to North America. Bison are often called buffalo," +
+                    " though this term is also used to refer to other bovines. It is one of two extant species of bison, alongside the European bison.",
+                    Kingdom = Nature.KingdomType.Fauna,
+                    Class = "Mammalia",
+                    Diet = Nature.DietType.Herbivore,
+                    Image = ReadFile("../../Images/Bison.jpg")
                 });
 
             context.ParkNatures.AddOrUpdate(x => x.ParkNatureId,
@@ -381,7 +434,122 @@
                     ParkNatureId = 5,
                     NatureId = 4,
                     ParkId = 1
-                });
+                },
+                new ParkNature()
+                {
+                    ParkNatureId = 6,
+                    NatureId = 6,
+                    ParkId = 1
+                },
+                new ParkNature()
+                {
+                    ParkNatureId = 7,
+                    NatureId = 7,
+                    ParkId = 1
+                },
+                new ParkNature()
+                {
+                    ParkNatureId = 8,
+                    NatureId = 8,
+                    ParkId = 1
+                },
+                new ParkNature()
+                {
+                    ParkNatureId = 9,
+                    NatureId = 9,
+                    ParkId = 1
+                },
+                new ParkNature()
+                {
+                    ParkNatureId = 10,
+                    NatureId = 10,
+                    ParkId = 1
+                },
+                new ParkNature()
+                {
+                    ParkNatureId = 11,
+                    NatureId = 11,
+                    ParkId = 1
+                },
+                new ParkNature()
+                {
+                    ParkNatureId = 12,
+                    NatureId = 6,
+                    ParkId = 2
+                },
+                new ParkNature()
+                {
+                    ParkNatureId = 13,
+                    NatureId = 6,
+                    ParkId = 3
+                },
+                new ParkNature()
+                {
+                    ParkNatureId = 14,
+                    NatureId = 6,
+                    ParkId = 4
+                },
+                new ParkNature()
+                {
+                    ParkNatureId = 15,
+                    NatureId = 6,
+                    ParkId = 5
+                },
+                new ParkNature()
+                {
+                    ParkNatureId = 16,
+                    NatureId = 6,
+                    ParkId = 6
+                },
+                new ParkNature()
+                {
+                    ParkNatureId = 17,
+                    NatureId = 6,
+                    ParkId = 7
+                },
+                new ParkNature()
+                {
+                    ParkNatureId = 18,
+                    NatureId = 6,
+                    ParkId = 8
+                },
+                new ParkNature()
+                {
+                    ParkNatureId = 19,
+                    NatureId = 6,
+                    ParkId = 9
+                },
+                new ParkNature()
+                {
+                    ParkNatureId = 20,
+                    NatureId = 6,
+                    ParkId = 10
+                },
+                new ParkNature()
+                {
+                    ParkNatureId = 21,
+                    NatureId = 5,
+                    ParkId = 9
+                },
+                new ParkNature()
+                {
+                    ParkNatureId = 22,
+                    NatureId = 10,
+                    ParkId = 6
+                },
+                new ParkNature()
+                {
+                    ParkNatureId = 23,
+                    NatureId = 10,
+                    ParkId = 7
+                },
+                new ParkNature()
+                {
+                    ParkNatureId = 24,
+                    NatureId = 10,
+                    ParkId = 8
+                }
+                );
         }
     }
 }

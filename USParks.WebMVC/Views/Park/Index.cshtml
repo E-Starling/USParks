@@ -3,12 +3,42 @@
 @{
     ViewBag.Title = "Park Index";
 }
+<style>
+    .parkstyle {
+        color: snow;
+        font-family: 'Comic Sans MS';
+        
+    }
+    .parkstyleh2 {
+        color: snow;
+        font-family: 'Comic Sans MS';
+        text-align: center;
+    }
+    
 
-<h2>Index</h2>
+    .parkbuttons {
+        color: snow;
+        font-size: 15px;
+        font-family: 'Comic Sans MS';
+        background-color: #617ebc;
+        padding: 5px 5px;
+        
+        
+        border-radius: 10%;
+    }
+
+        .parkbuttons:hover {
+            background-color: #6c8cd1;
+            text-decoration: none;
+            color: cyan;
+        }
+</style>
+<h1 class="parkstyleh2">List of Parks</h1>
 
 <p>
-    @Html.ActionLink("Add Park", "Create")
+    @Html.ActionLink("Add Park", "Create", new { area = "" }, new { @class = "parkbuttons" })
 </p>
+
 @if (TempData.ContainsKey("ParkError"))
 {
     <div class="alert alert-warning fade in" role="alert">
@@ -75,50 +105,52 @@
     </div>
 }
 
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ParkId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.parkType)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Location)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Image)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<div class="parkstyle">
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ParkId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.parkType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
-            </td>
-            <td>
-                <img src="/Park/RetrieveImage/@item.ParkId" alt="" height=100 width=200 />
-            </td>
-            <td>
-                @Html.ActionLink("Details", "Details", new { id = item.ParkId }) |
-                @Html.ActionLink("Edit", "Edit", new { id = item.ParkId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ParkId })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.ParkId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.parkType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th></th>
         </tr>
-    }
-</table>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ParkId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.parkType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td>
+                    <img src="/Park/RetrieveImage/@item.ParkId" alt="" height=100 width=200 />
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.ParkId }, new { @class = "parkbuttons" }) |
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ParkId }, new { @class = "parkbuttons" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ParkId }, new { @class = "parkbuttons" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
