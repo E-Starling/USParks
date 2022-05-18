@@ -114,8 +114,58 @@
                     Size = 893,
                     YearlyVisitors = 18216,
                     Image = ReadFile("../../Images/isleroyal.jpg")
+                },
+                new Park()
+                {
+                    ParkId = 7,
+                    Name = "Yosemite",
+                    parkType = Park.ParkType.National,
+                    Description = "Yosemite National Park is in California’s Sierra Nevada mountains. It’s famed for its giant, ancient sequoia trees, and for Tunnel View," +
+                    " the iconic vista of towering Bridalveil Fall and the granite cliffs of El Capitan and Half Dome. In Yosemite Village are shops, restaurants, lodging," +
+                    " the Yosemite Museum and the Ansel Adams Gallery, with prints of the photographer’s renowned black-and-white landscapes of the area.",
+                    Location = "California",
+                    Size = 1169,
+                    YearlyVisitors = 4200000,
+                    Image = ReadFile("../../Images/Yosemite.jpg")
+                },
+                new Park()
+                {
+                    ParkId = 8,
+                    Name = "Glacier",
+                    parkType = Park.ParkType.National,
+                    Description = "Glacier National Park is a 1,583-sq.-mi. wilderness area in Montana's Rocky Mountains, with glacier-carved peaks and valleys running to the Canadian border." +
+                    " It's crossed by the mountainous Going-to-the-Sun Road. Among more than 700 miles of hiking trails, it has a route to photogenic Hidden Lake." +
+                    " Other activities include backpacking, cycling and camping. Diverse wildlife ranges from mountain goats to grizzly bears.",
+                    Location = "Montana",
+                    Size = 1583,
+                    YearlyVisitors = 3000000,
+                    Image = ReadFile("../../Images/Glacier.jpg")
+                },
+                new Park()
+                {
+                    ParkId = 9,
+                    Name = "Ichetucknee Springs",
+                    parkType = Park.ParkType.State,
+                    Description = "Although well-known for its warm weather tubing, the 2,669-acre Ichetucknee Springs State Park is also a wildlife haven, where beaver, otter, gar, softshell turtle" +
+                    ", wild turkey, wood duck and limpkin all find a home. The main draw is the park’s eight major crystal-clear springs that join to create the 6-mile Ichetucknee River.",
+                    Location = "Florida",
+                    Size = 3,
+                    YearlyVisitors = 200000,
+                    Image = ReadFile("../../Images/IchetuckneeSprings.jfif")
+                },
+                new Park()
+                {
+                    ParkId = 10,
+                    Name = "Waiʻānapanapa",
+                    parkType = Park.ParkType.State,
+                    Description = "Remote, wild, volcanic coastline offering solitude and respite from urban life. Lodging, camping, picnicking, shore fishing and hardy family hiking along an" +
+                    " ancient Hawaiian coastal trail which leads to Hana. Excellent opportunity to view a seabird colony and natural stone arch. Other features include native hala forest," +
+                    " heiau (religious temple), sea stacks, blow holes and small black sand beach.",
+                    Location = "Hawaii",
+                    Size = 1,
+                    YearlyVisitors = 180000,
+                    Image = ReadFile("../../Images/Waianapanapa.jpeg")
                 }
-
                 );
 
             context.Attractions.AddOrUpdate(x => x.AttractionId,
@@ -127,22 +177,100 @@
                     " It was named in 1870 during the Washburn–Langford–Doane Expedition and was the first geyser in the park to be named." +
                     " It is a highly predictable geothermal feature and has erupted every 44 minutes to two hours since 2000.",
                     ParkId = 1,
-                    Image = ReadFile("../../Images/USParks.png")
+                    Image = ReadFile("../../Images/OldFaithful.jpg")
                 },
                 new Attraction()
                 {
                     AttractionId = 2,
                     Name = "Mather Point",
                     Description = "Scenic viewpoint along South Rim, popular for its canyon vistas & proximity to the visitor center.",
-                    ParkId = 2
+                    ParkId = 2,
+                    Image = ReadFile("../../Images/MatherPoint.jpg")
+
                 },
                 new Attraction()
                 {
                     AttractionId = 3,
                     Name = "Yavapai Observation Station",
                     Description = "Educational museum on the South Rim offering a topographic relief model of the Grand Canyon.",
-                    ParkId = 2
-                });
+                    ParkId = 2,
+                    Image = ReadFile("../../Images/YavapaiObservationStation.jpg")
+                },
+                new Attraction()
+                {
+                    AttractionId = 4,
+                    Name ="Hole in the Wall",
+                    Description = "Hole-in-the Wall Falls is an overfalls in Montana and has an elevation of 6,257 feet." +
+                    " Hole-in-the Wall Falls is situated east of Boulder Glacier, and east of Boulder Pass.",
+                    ParkId = 8,
+                    Image = ReadFile("../../Images/HoleInTheWall.jpg")
+                },
+                new Attraction()
+                {
+                    AttractionId = 5,
+                    Name = "El Capitan",
+                    Description = "El Capitan’s iconic granite walls dominate the west end of Yosemite Valley. At more than" +
+                    " 3,000 feet (900+ m) above the valley floor, it is 2.5 times as tall as the Empire State Building, or more" +
+                    " than 3 times as high as the tip of the Eiffel Tower. Coming around the corner and having El Capitan suddenly" +
+                    " fill your field of vision sometimes moves people to tears. It is a beacon for visitors, a muse for photographers" +
+                    " and one of the world’s ultimate challenges for climbers.",
+                    ParkId = 7,
+                    Image = ReadFile("../../Images/ElCapitan.jpg")
+                },
+                new Attraction()
+                {
+                    AttractionId = 6,
+                    Name = "Mariposa Grove of Giant Sequoias",
+                    Description = "The Mariposa Grove of Giant Sequoia Trees, near Yosemite’s south entrance, contains about 500" +
+                    " mature giant sequoia trees, perhaps the largest living things on Earth. The oldest Yosemite giant sequoia" +
+                    " may exceed 3,000 years in age!  Among the most popular specimens in the grove is the Fallen Monarch which" +
+                    " is made famous for an 1899 photograph of U.S. Cavalry officers on their horses up on top.",
+                    ParkId = 7,
+                    Image = ReadFile("../../Images/MariposaGroveofGiantSequoias.jpg")
+                },
+                new Attraction()
+                {
+                    AttractionId = 7,
+                    Name = "Black Sand Beach Overlook",
+                    Description = "After you park, you’ll see a sidewalk that will take you to the Waianapanapa black sand beach overlook." +
+                    " This will be your first glimpse of the black sand beach – and it’s a view of Pailoa Bay from above!",
+                    ParkId = 10,
+                    Image = ReadFile("../../Images/BeachOverlook.jpeg")
+                },
+                new Attraction()
+                {
+                    AttractionId = 8,
+                    Name = "Menagerie Island Light",
+                    Description = "The Isle Royale Light stands on long, rocky Menagerie Island via Isle Royale's south shore at the entry" +
+                    " to Siskiwit Bay. Reachable only by private boat, it features a 61-foot double-walled octagonal sandstone tower," +
+                    " with a black lantern and gallery. It was completed and operative in 1875, and automated in 1913. The original Fourth" +
+                    " Order Fresnel lens and subsequent light systems have been replaced with a 12-volt solar power 300 mm Tidelands Signal" +
+                    " Acrylic Optic, which sends its beam out 10 miles.",
+                    ParkId = 6,
+                    Image = ReadFile("../../Images/MenagerieIslandLight.jpg")
+                },
+                new Attraction()
+                {
+                    AttractionId = 9,
+                    Name = "Scoville Point",
+                    Description = "This figure eight shaped trail offers the experience of a primarily wooded setting on the Tobin Harbor side," +
+                    " and a rocky, exposed setting on the Rock Harbor side. At the end of the trail, both paths converge for the last half mile" +
+                    " to ascend the rocky face of Scoville Point. Two return loops alow great versatility regarding the length and duration.",
+                    ParkId = 6,
+                    Image = ReadFile("../../Images/ScovillePoint.jfif")
+                },
+                new Attraction()
+                {
+                    AttractionId = 10,
+                    Name = "Turkey Run Nature Center",
+                    Description = "The Turkey Run State Park Nature Center offers interpretive naturalist services all year long." +
+                    " Scheduled programs include hikes, planetarium programs, history talks, a junior naturalist program, and evening programs." +
+                    " Special groups wishing programs just for their group should call in advance for this free service." +
+                    " Inquire at the Nature Center, Inn or Park Office.",
+                    ParkId = 4,
+                    Image = ReadFile("../../Images/TurkeyRunCenter.jpg")
+                }
+                );
 
             context.Nature.AddOrUpdate(x => x.NatureId,
                 new Nature()
@@ -154,7 +282,8 @@
                     " American black bears are omnivores, with their diets varying greatly depending on season and location.",
                     Kingdom = Nature.KingdomType.Fauna,
                     Class = "Mammal",
-                    Diet = Nature.DietType.Omnivore
+                    Diet = Nature.DietType.Omnivore,
+                    Image = ReadFile("../../Images/BlackBear.jpg")
                 },
                 new Nature()
                 {
@@ -165,7 +294,8 @@
                     " which occupies the same niche as the bald eagle in the Palearctic.",
                     Kingdom = Nature.KingdomType.Fauna,
                     Class = "Aves",
-                    Diet = Nature.DietType.Carnivore
+                    Diet = Nature.DietType.Carnivore,
+                    Image = ReadFile("../../Images/BaldEagle.jpg")
                 },
                 new Nature()
                 {
@@ -176,7 +306,8 @@
                     " There are three varieties: coast Douglas-fir, Rocky Mountain Douglas-fir and Mexican Douglas-fir.",
                     Kingdom = Nature.KingdomType.Flora,
                     Class = "Conifer",
-                    Diet = Nature.DietType.Other
+                    Diet = Nature.DietType.Other,
+                    Image = ReadFile("../../Images/DouglasFir.jpg")
                 },
                 new Nature()
                 {
@@ -187,7 +318,37 @@
                     " it has been selected for inclusion in several regional Red Lists.",
                     Kingdom = Nature.KingdomType.Funga,
                     Class = "Agaricomycetes",
-                    Diet = Nature.DietType.Other
+                    Diet = Nature.DietType.Other,
+                    Image = ReadFile("../../Images/SuillusSibiricus.jpg")
+                },
+                new Nature()
+                {
+                    NatureId = 5,
+                    Name = "Manatee",
+                    Description = "Manatees are large, fully aquatic, mostly herbivorous marine mammals sometimes known as sea cows." +
+                    " There are three accepted living species of Trichechidae, representing three of the four living species in the order" +
+                    " Sirenia: the Amazonian manatee, the West Indian manatee, and the West African manatee.",
+                    Kingdom = Nature.KingdomType.Fauna,
+                    Class = "Mammalia",
+                    Diet = Nature.DietType.Herbivore,
+                    Image = ReadFile("../../Images/Manatee.jpg")
+                },
+                new Nature()
+                {
+                    NatureId = 6,
+                    Name = "Squirrel",
+                    Description = "Squirrels are members of the family Sciuridae, a family that includes small or medium-size rodents." +
+                    " The squirrel family includes tree squirrels, ground squirrels, and flying squirrels. Squirrels are indigenous to" +
+                    " the Americas, Eurasia, and Africa, and were introduced by humans to Australia. ",
+                    Kingdom = Nature.KingdomType.Fauna,
+                    Class = "Mammalia",
+                    Diet = Nature.DietType.Omnivore,
+                    Image = ReadFile("../../Images/Squirrel.jpg")
+                },
+                new Nature()
+                {
+                    NatureId = 7,
+                    Name = ""
                 });
 
             context.ParkNatures.AddOrUpdate(x => x.ParkNatureId,

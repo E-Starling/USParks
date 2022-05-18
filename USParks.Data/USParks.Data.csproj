@@ -135,13 +135,32 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\BaldEagle.jpg" />
+    <Content Include="Images\BeachOverlook.jpeg" />
+    <Content Include="Images\BlackBear.jpg" />
+    <Content Include="Images\DouglasFir.jpg" />
+    <Content Include="Images\ElCapitan.jpg" />
+    <Content Include="Images\Glacier.jpg" />
     <Content Include="Images\grandcaynon.jpg" />
     <Content Include="Images\grandteton.jpg" />
+    <Content Include="Images\HoleInTheWall.jpg" />
+    <Content Include="Images\IchetuckneeSprings.jfif" />
     <Content Include="Images\indianadunes.jpg" />
     <Content Include="Images\isleroyal.jpg" />
+    <Content Include="Images\Manatee.jpg" />
+    <Content Include="Images\MariposaGroveofGiantSequoias.jpg" />
+    <Content Include="Images\MatherPoint.jpg" />
+    <Content Include="Images\MenagerieIslandLight.jpg" />
+    <Content Include="Images\OldFaithful.jpg" />
+    <Content Include="Images\ScovillePoint.jfif" />
+    <Content Include="Images\Squirrel.jpg" />
+    <Content Include="Images\SuillusSibiricus.jpg" />
     <Content Include="Images\turkeyrun.jpg" />
-    <Content Include="Images\USParks.png" />
+    <Content Include="Images\TurkeyRunCenter.jpg" />
+    <Content Include="Images\Waianapanapa.jpeg" />
+    <Content Include="Images\YavapaiObservationStation.jpg" />
     <Content Include="Images\yellowstone.jfif" />
+    <Content Include="Images\Yosemite.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Web;
 using USParks.Data;
 using USParks.Models.ParkNature;
 
@@ -58,8 +60,9 @@ namespace USParks.Services
                     ParkNatureId = e.ParkNatureId,
                     NatureId = e.NatureId,
                     NatureName = e.Nature.Name,
+                    Image = e.Nature.Image,
                     ParkId = e.ParkId,
-                    ParkName = e.Park.Name
+                    ParkName = e.Park.Name    
                 });
                 return query.ToArray();
             }
@@ -81,6 +84,7 @@ namespace USParks.Services
                                 ParkNatureId = entity.ParkNatureId,
                                 NatureId = entity.NatureId,
                                 NatureName = entity.Nature.Name,
+                                Image = entity.Nature.Image,
                                 ParkId = entity.ParkId,
                                 ParkName = entity.Park.Name
                             };
@@ -97,6 +101,24 @@ namespace USParks.Services
                 var entity = ctx.ParkNatures.Single(e => e.ParkNatureId == parkNatureId);
                 ctx.ParkNatures.Remove(entity);
                 return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public byte[] ConvertToBytes(HttpPostedFileBase image)
+        {
+            byte[] imageBytes = null;
+            BinaryReader reader = new BinaryReader(image.InputStream);
+            imageBytes = reader.ReadBytes((int)image.ContentLength);
+            return imageBytes;
+        }
+
+        public byte[] GetImageFromDataBase(int Id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var q = from temp in ctx.Nature where temp.NatureId == Id select temp.Image;
+                byte[] cover = q.First();
+                return cover;
             }
         }
     }

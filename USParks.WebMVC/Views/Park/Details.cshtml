@@ -71,29 +71,35 @@
         
             @Html.ActionLink("Add Nature to Park", "Create", "ParkNature")
         
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nature.First().NatureId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nature.First().NatureName)
-            </th>
-            <th></th>
-        </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nature.First().NatureId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nature.First().NatureName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nature.First().Image)
+        </th>
+        <th></th>
+    </tr>
         @foreach (var nature in Model.Nature)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelnature => nature.NatureId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelnature => nature.NatureName)
-                </td>
-                <td>
-                    @Html.ActionLink("Details", "Details", "Nature", new { id = nature.NatureId }, null) |
-                    @Html.ActionLink("Delete", "Delete", "ParkNature", new { id = nature.ParkNatureId }, null) |
-                </td>
-            </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelnature => nature.NatureId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelnature => nature.NatureName)
+        </td>
+        <td>
+            <img src="/Nature/RetrieveImage/@nature.NatureId" alt="" height=100 width=200 />
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", "Nature", new { id = nature.NatureId }, null) |
+            @Html.ActionLink("Delete", "Delete", "ParkNature", new { id = nature.ParkNatureId }, null) |
+        </td>
+    </tr>
         }
 
     </table>
