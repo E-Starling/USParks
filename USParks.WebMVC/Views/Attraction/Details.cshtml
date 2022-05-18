@@ -1,59 +1,166 @@
 ﻿@model USParks.Models.Attraction.AttractionDetail
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Attraction Detail";
 }
+<style>
+    .bigstyle {
+        color: snow;
+        font-family: 'Comic Sans MS';
+        font-weight: 700;
+    }
 
-<h2>Details</h2>
+    .style {
+        color: snow;
+        font-family: 'Comic Sans MS';
+        padding-left: 30px;
+    }
+
+    .rtable {
+        float: right;
+        table-layout: fixed;
+        border: 1px solid #cabe9b;
+        width: 300px;
+        margin: .5em 0 1em 1em;
+        border-collapse: collapse;
+        word-break: break-word;
+        background-color: #313e59;
+    }
+
+        .rtable td {
+            padding: 0em 0.5em;
+            line-height: 1.6em;
+            font-size: 14px;
+        }
+
+    .tbody {
+        font-size: 0.85em;
+        color: snow;
+        font-family: 'Comic Sans MS';
+    }
+
+    .tablehead {
+        font-size: 1.15em;
+        line-height: 1.4em;
+        padding: .5em 0;
+        background-color: #222e45;
+        color: snow;
+        text-align: center;
+    }
+
+    .tablepad {
+        height: 0.5em;
+        padding: 0;
+        border: 0;
+    }
+
+    .tableimage {
+        max-width: 300px;
+        text-align: center;
+        overflow: hidden;
+        padding: 0;
+    }
+
+    .tablenames {
+        text-align: right;
+        vertical-align: top;
+        border-right: 2px solid #b8a282;
+        padding: 0.5em 0.5em;
+        font-size: 14px;
+    }
+
+    .detailtable {
+        background-color: #313e59;
+        float: left;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .natureh {
+        color: snow;
+        padding-right: 20px;
+        margin-right: 20px;
+        font-weight: bold;
+    }
+
+        .natureh h4 {
+            font-weight: bold;
+            font-family: 'Comic Sans MS';
+        }
+
+    .natureitems {
+        display: flex;
+        box-sizing: border-box;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+        .natureitems li {
+            list-style: none;
+            color: snow;
+            font-family: 'Comic Sans MS';
+        }
+
+    .parknatbuttons {
+        color: snow;
+        font-size: 15px;
+        font-family: 'Comic Sans MS';
+        background-color: #617ebc;
+        padding: 5px 5px;
+        border-radius: 10%;
+    }
+
+        .parknatbuttons:hover {
+            background-color: #6c8cd1;
+            text-decoration: none;
+            color: cyan;
+        }
+</style>
 
 <div>
-    <h4>AttractionDetail</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.AttractionId)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.AttractionId)
-        </dd>
+</div>
+<div>
+    <table class="rtable">
+        <tbody class="tbody">
+            <tr>
+                <th colspan="30" class="tablehead">@Html.DisplayFor(model => model.Name) @Html.ActionLink("Edit", "Edit", new { id = Model.AttractionId }, new { @class = "parknatbuttons" })</th>
+            </tr>
+            <tr>
+                <td colospan="30" class="tablepad"></td>
+            </tr>
+            <tr>
+                <td colspan="30" class="tableimage"><img src="/Attraction/RetrieveImage/@Model.AttractionId" alt="" height=150 width=280 /></td>
+            </tr>
+            <tr>
+                <td colspan="30" class="tablepad"></td>
+            </tr>
+            <tr>
+                <th colspan="10" class="tablenames">@Html.DisplayNameFor(model => model.AttractionId)</th>
+                <td colspan="20">@Html.DisplayFor(model => model.ParkId)</td>
+            </tr>
+            <tr>
+                <th colspan="10" class="tablenames">@Html.DisplayNameFor(model => model.Name)</th>
+                <td colspan="20">@Html.DisplayFor(model => model.Name)</td>
+            </tr>
+            <tr>
+                <th colspan="10" class="tablenames">@Html.DisplayNameFor(model => model.ParkId)</th>
+                <td colspan="20">@Html.DisplayFor(model => model.ParkId)</td>
+            </tr>
+            <tr>
+                <th colspan="10" class="tablenames">@Html.DisplayNameFor(model => model.ParkName)</th>
+                <td colspan="20">@Html.DisplayFor(model => model.ParkName)</td>
+            </tr>
+        </tbody>
+    </table>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ParkId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ParkId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ParkName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ParkName)
-        </dd>
-
-    </dl>
+    <div>
+        <h2 class="bigstyle">@Html.DisplayFor(model => model.Name)</h2>
+        <h4 class="style">@Html.DisplayFor(model => model.Description)</h4>
+    </div>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new {  id = Model.AttractionId  }) |
-    @Html.ActionLink("Back to Attraction List", "Index") |
-    @Html.ActionLink("Back to Attraction's Park", "Details", "Park", new { id = Model.ParkId }, null)
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AttractionId }, new { @class = "parknatbuttons" }) |
+    @Html.ActionLink("Back to Attraction List", "Index", new { area = "" }, new { @class = "parknatbuttons" }) |
+    @Html.ActionLink("Back to Attraction's Park", "Details", "Park", new { id = Model.ParkId }, new { @class = "parknatbuttons" })
 </p>

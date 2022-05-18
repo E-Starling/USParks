@@ -1,7 +1,7 @@
 ﻿@model USParks.Models.Park.ParkDetail
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Park Detail";
 }
 <style>
     .bigstyle {
@@ -75,68 +75,6 @@
         width: 100%;
         max-width: 100%;
     }
-
-    .popular {
-        display: flex;
-        flex-flow: column wrap;
-    }
-
-    .popular-halves {
-        display: flex;
-        flex-flow: row wrap;
-    }
-
-    .popular-top {
-        width: 100%;
-        padding: 1.3rem 1.5rem 0.6rem;
-    }
-
-    .popular-pages {
-        display: block;
-    }
-
-        .popular-pages h2 {
-            font-size: 1.4em;
-            font-weight: bold;
-            color: snow;
-            font-family: 'Comic Sans MS';
-        }
-
-        .popular-pages ul {
-            display: flex;
-            margin: 1em 0 0.7em;
-            width: 100%;
-            flex-flow: row wrap;
-        }
-
-    .popular-pages-items {
-        display: flex;
-        align-items: center;
-        list-style: none;
-        transition: 0.2s;
-        margin-left: 30px;
-        margin-right: 30px;
-        color: snow;
-        font-family: 'Comic Sans MS';
-    }
-
-
-    .popularitems {
-        color: snow;
-        font-size: 16px;
-        font-family: 'Comic Sans MS';
-        background-color: #617ebc;
-        padding: 12px 16px;
-        margin-right: 2em;
-        margin-bottom: 2em;
-    }
-
-        .popularitems:hover {
-            background-color: #6c8cd1;
-            text-decoration: none;
-            color: cyan;
-        }
-
     .natureh {
         color: snow;
         padding-right: 20px;
@@ -180,7 +118,7 @@
     <table class="rtable">
         <tbody class="tbody">
             <tr>
-                <th colspan="30" class="tablehead">@Html.DisplayFor(model => model.Name) @Html.DisplayFor(model => model.parkType) Park</th>
+                <th colspan="30" class="tablehead">@Html.DisplayFor(model => model.Name) @Html.DisplayFor(model => model.parkType) Park @Html.ActionLink("Edit", "Edit", new { id = Model.ParkId }, new { @class = "parknatbuttons" })</th>           
             </tr>
             <tr>
                 <td colospan="30" class="tablepad"></td>
@@ -232,23 +170,23 @@
     <div class="natureitems">
         @foreach (var nature in Model.Nature)
         {
-        <ul>
-            <li>
-                <img src="/Nature/RetrieveImage/@nature.NatureId" alt="" height=80 width=100 />
-            </li>
-            <li style="text-align:center">
-                @Html.DisplayFor(modelnature => nature.NatureName)
-            </li>
-            <p class="empty"></p>
-            <li>
-                @Html.DisplayNameFor(model => model.Nature.First().NatureId): @Html.DisplayFor(modelnature => nature.NatureId)
-            </li>
-            <li>
-                @Html.ActionLink("Details", "Details", "Nature", new { id = nature.NatureId }, null) |
-                @Html.ActionLink("Delete", "Delete", "ParkNature", new { id = nature.ParkNatureId }, null)
-            </li>
-            <p class="empty"></p>
-        </ul>
+            <ul>
+                <li>
+                    <img src="/Nature/RetrieveImage/@nature.NatureId" alt="" height=80 width=100 />
+                </li>
+                <li style="text-align:center">
+                    @Html.DisplayFor(modelnature => nature.NatureName)
+                </li>
+                <p class="empty"></p>
+                <li>
+                    @Html.DisplayNameFor(model => model.Nature.First().NatureId): @Html.DisplayFor(modelnature => nature.NatureId)
+                </li>
+                <li>
+                    @Html.ActionLink("Details", "Details", "Nature", new { id = nature.NatureId }, null) |
+                    @Html.ActionLink("Delete", "Delete", "ParkNature", new { id = nature.ParkNatureId }, null)
+                </li>
+                <p class="empty"></p>
+            </ul>
         }
     </div>
 
@@ -257,6 +195,7 @@
         @Html.ActionLink("Add Attraction to Park", "Create", "Attraction")
         <p class="empty"></p>
     </div>
+    
     <div class="natureitems">
         @foreach (var attraction in Model.Attractions)
         {
@@ -280,7 +219,6 @@
         </ul>
         }
     </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ParkId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+    <p>
+        @Html.ActionLink("Back to List", "Index", new { area = "" }, new { @class = "parknatbuttons" })
+    </p>

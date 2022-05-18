@@ -1,18 +1,36 @@
 ﻿@model USParks.Models.Park.ParkDetail
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Park Delete";
 }
+<style>
+    .style {
+        color: snow;
+        font-family: 'Comic Sans MS'
+    }
 
-<h2>Delete</h2>
+    .back {
+        color: snow;
+        font-size: 15px;
+        font-family: 'Comic Sans MS';
+        background-color: #617ebc;
+        padding: 5px 5px;
+        border-radius: 10%;
+    }
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>ParkDetail</h4>
+        .back:hover {
+            background-color: #6c8cd1;
+            text-decoration: none;
+            color: cyan;
+        }
+</style>
+<h2 class="style">Park Delete</h2>
+<h4 class="style">Your About to delete a park... Are you sure?</h4>
+<div class="style">
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.ParkId)
+            @Html.DisplayNameFor(model => model.ParkId):
         </dt>
 
         <dd>
@@ -20,53 +38,12 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Name):
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.parkType)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.parkType)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Location)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Location)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Size)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Size)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.YearlyVisitors)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.YearlyVisitors)
-        </dd>
-
+        </dd>     
     </dl>
 
     @using (Html.BeginForm()) {
@@ -74,7 +51,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("Back to List", "Index", new { area = "" }, new { @class = "back" })
         </div>
     }
 </div>

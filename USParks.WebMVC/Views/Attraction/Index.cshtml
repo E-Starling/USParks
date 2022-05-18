@@ -1,60 +1,88 @@
 ﻿@model IEnumerable<USParks.Models.Attraction.AttractionListItem>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Attraction Index";
 }
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.AttractionId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ParkId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ParkName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Image)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.AttractionId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ParkId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ParkName)
-            </td>
-            <td>
-                <img src="/Attraction/RetrieveImage/@item.AttractionId" alt="" height=100 width=200 />
-            </td>
-            <td>
-                @Html.ActionLink("Details", "Details", new { id = item.AttractionId }) |
-                @Html.ActionLink("Edit", "Edit", new { id = item.AttractionId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.AttractionId })
-            </td>
-        </tr>
+<style>
+    .parkstyle {
+        color: snow;
+        font-family: 'Comic Sans MS';
+        font-size: 13px;
     }
 
-</table>
+    .parkstyleh2 {
+        color: snow;
+        font-family: 'Comic Sans MS';
+        text-align: center;
+    }
+
+
+    .parkbuttons {
+        color: snow;
+        font-size: 15px;
+        font-family: 'Comic Sans MS';
+        background-color: #617ebc;
+        padding: 5px 5px;
+        border-radius: 10%;
+    }
+
+        .parkbuttons:hover {
+            background-color: #6c8cd1;
+            text-decoration: none;
+            color: cyan;
+        }
+</style>
+<h1 class="parkstyleh2">List of Attractions</h1>
+
+<p>
+    @Html.ActionLink("Add Attraction", "Create", new { area = "" }, new { @class = "parkbuttons" })
+</p>
+
+<div class="parkstyle">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AttractionId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParkId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParkName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AttractionId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ParkId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ParkName)
+                </td>
+                <td>
+                    <img src="/Attraction/RetrieveImage/@item.AttractionId" alt="" height=100 width=200 />
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.AttractionId }, new { @class = "parkbuttons" }) |
+                    @Html.ActionLink("Edit", "Edit", new { id = item.AttractionId }, new { @class = "parkbuttons" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.AttractionId }, new { @class = "parkbuttons" })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
