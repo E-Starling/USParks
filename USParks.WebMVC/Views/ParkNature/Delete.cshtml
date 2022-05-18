@@ -1,14 +1,33 @@
 ﻿@model USParks.Models.ParkNature.ParkNatureDetail
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Remove Nature";
 }
+<style>
+    .style {
+        color: snow;
+        font-family: 'Comic Sans MS'
+    }
 
-<h2>Delete</h2>
+    .back {
+        color: snow;
+        font-size: 15px;
+        font-family: 'Comic Sans MS';
+        background-color: #617ebc;
+        padding: 5px 5px;
+        border-radius: 10%;
+    }
 
-<h3>Are you sure you want to remove nature item from the park?</h3>
-<div>
-    <h4>ParkNatureDetail</h4>
+        .back:hover {
+            background-color: #6c8cd1;
+            text-decoration: none;
+            color: cyan;
+        }
+</style>
+<h2 class="style">Remove Nature From Park</h2>
+<h4 class="style">Your About to remove a nature item from the park... Are you sure?</h4>
+<div class="style">
+   
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -34,7 +53,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Details", "Details", "Park", new { id = Model.ParkId }, null) |
+            @Html.ActionLink("Park Details", "Details", "Park", new { id = Model.ParkId }, new { @class = "back" }) |
         </div>
     }
 </div>

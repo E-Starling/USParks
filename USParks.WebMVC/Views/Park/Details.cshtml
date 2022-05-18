@@ -75,29 +75,32 @@
         width: 100%;
         max-width: 100%;
     }
+
     .natureh {
         color: snow;
         padding-right: 20px;
         margin-right: 20px;
         font-weight: bold;
     }
-    .natureh h4{
-        font-weight: bold;
-        font-family: 'Comic Sans MS';
-    }
+
+        .natureh h4 {
+            font-weight: bold;
+            font-family: 'Comic Sans MS';
+        }
+
     .natureitems {
         display: flex;
         box-sizing: border-box;
         flex-direction: row;
         flex-wrap: wrap;
-        
-        
     }
-    .natureitems li{
-        list-style:none;
-        color: snow;
-        font-family: 'Comic Sans MS';
-    }
+
+        .natureitems li {
+            list-style: none;
+            color: snow;
+            font-family: 'Comic Sans MS';
+        }
+
     .parknatbuttons {
         color: snow;
         font-size: 15px;
@@ -114,11 +117,11 @@
         }
 </style>
 
-<div>
+
     <table class="rtable">
         <tbody class="tbody">
             <tr>
-                <th colspan="30" class="tablehead">@Html.DisplayFor(model => model.Name) @Html.DisplayFor(model => model.parkType) Park @Html.ActionLink("Edit", "Edit", new { id = Model.ParkId }, new { @class = "parknatbuttons" })</th>           
+                <th colspan="30" class="tablehead">@Html.DisplayFor(model => model.Name) @Html.DisplayFor(model => model.parkType) Park @Html.ActionLink("Edit", "Edit", new { id = Model.ParkId }, new { @class = "parknatbuttons" })</th>
             </tr>
             <tr>
                 <td colospan="30" class="tablepad"></td>
@@ -161,44 +164,44 @@
         <h4 class="style">@Html.DisplayFor(model => model.Description)</h4>
     </div>
 
-    <div style="border-bottom: 1px solid #b8a282" class="natureh">
-        <h4>Nature found within the park: </h4>
-        @Html.ActionLink("Add Nature Park", "Create", "ParkNature")
-        <p class="empty"></p>
-    </div>
+<div style="border-bottom: 1px solid #b8a282" class="natureh">
+    <h4>Nature found within the park: </h4>
+    @Html.ActionLink("Add Nature to Park", "Create", "ParkNature")
+    <p class="empty"></p>
+</div>
 
-    <div class="natureitems">
-        @foreach (var nature in Model.Nature)
-        {
-            <ul>
-                <li>
-                    <img src="/Nature/RetrieveImage/@nature.NatureId" alt="" height=80 width=100 />
-                </li>
-                <li style="text-align:center">
-                    @Html.DisplayFor(modelnature => nature.NatureName)
-                </li>
-                <p class="empty"></p>
-                <li>
-                    @Html.DisplayNameFor(model => model.Nature.First().NatureId): @Html.DisplayFor(modelnature => nature.NatureId)
-                </li>
-                <li>
-                    @Html.ActionLink("Details", "Details", "Nature", new { id = nature.NatureId }, null) |
-                    @Html.ActionLink("Delete", "Delete", "ParkNature", new { id = nature.ParkNatureId }, null)
-                </li>
-                <p class="empty"></p>
-            </ul>
-        }
-    </div>
+<div class="natureitems">
+    @foreach (var nature in Model.Nature)
+    {
+        <ul>
+            <li>
+                <img src="/Nature/RetrieveImage/@nature.NatureId" alt="" height=80 width=100 />
+            </li>
+            <li style="text-align:center">
+                @Html.DisplayFor(modelnature => nature.NatureName)
+            </li>
+            <p class="empty"></p>
+            <li>
+                @Html.DisplayNameFor(model => model.Nature.First().NatureId): @Html.DisplayFor(modelnature => nature.NatureId)
+            </li>
+            <li>
+                @Html.ActionLink("Details", "Details", "Nature", new { id = nature.NatureId }, null) |
+                @Html.ActionLink("Remove", "Delete", "ParkNature", new { id = nature.ParkNatureId }, null)
+            </li>
+            <p class="empty"></p>
+        </ul>
+    }
+</div>
 
-    <div style="border-bottom: 1px solid #b8a282" class="natureh">
-        <h4>Attractions found within the park: </h4>
-        @Html.ActionLink("Add Attraction to Park", "Create", "Attraction")
-        <p class="empty"></p>
-    </div>
-    
-    <div class="natureitems">
-        @foreach (var attraction in Model.Attractions)
-        {
+<div style="border-bottom: 1px solid #b8a282" class="natureh">
+    <h4>Attractions found within the park: </h4>
+    @Html.ActionLink("Add Attraction to Park", "Create", "Attraction")
+    <p class="empty"></p>
+</div>
+
+<div class="natureitems">
+    @foreach (var attraction in Model.Attractions)
+    {
         <ul>
             <li>
                 <img src="/Attraction/RetrieveImage/@attraction.AttractionId" alt="" height=80 width=100 />
@@ -217,8 +220,8 @@
             </li>
             <p class="empty"></p>
         </ul>
-        }
-    </div>
-    <p>
-        @Html.ActionLink("Back to List", "Index", new { area = "" }, new { @class = "parknatbuttons" })
-    </p>
+    }
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index", new { area = "" }, new { @class = "parknatbuttons" })
+</p>
