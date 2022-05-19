@@ -21,7 +21,7 @@ USParks.Data
 ```
 4. Type in: 
 ```sh
-Update-Database
+Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r
 ```
 
 ## How to use
