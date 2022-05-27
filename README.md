@@ -23,6 +23,10 @@ USParks.Data
 ```sh
 Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r
 ```
+4. Type in: 
+```sh
+Update-Database
+```
 
 ## How to use
 1. Open up browser with the MVC
