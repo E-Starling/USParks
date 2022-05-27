@@ -23,7 +23,7 @@ USParks.Data
 ```sh
 Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r
 ```
-4. Type in: 
+5. Type in: 
 ```sh
 Update-Database
 ```
